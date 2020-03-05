@@ -1,13 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
+import React from 'react';import {
+  HashRouter as Router,
+  Route
+} from 'react-router-dom'
 import './App.css';
+import { FrontPage } from './components/front-page/front-page';
+import { QuizFrontPage } from './components/quiz-page/quiz-front-page';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
+      <Router>
+        <Route exact path={'/'} component={FrontPage} />
+        <Route path={'/quiz'} component={QuizFrontPage} />
+      </Router>
     </div>
   );
 }
