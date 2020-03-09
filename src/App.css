@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+
+.equation {
+  height: 100px;
+  display: flex;
+}

@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import LogoImage from '../.././assets/images/ee_symbol1.gif';
 import { ReplyButton } from '../Buttons/reply-button';
-import { MathJax } from 'react-mathjax-ts';
+import MJ from '../../../src/mathjax-ts';
 
-const tex = `f(x) = \\int_{-\\infty}^\\infty
-    \\hat f(\\xi)\\,e^{2 \\pi i \\xi x}
-    \\,d\\xi`
+const tex = 'U = 1/(R_(si) + sum_(i=1)^n(s_n/lambda_n) + R_(se))';
 
 export const FrontPage: React.FC = () => {
     const [answeredYes, setAnsweredYes] = useState(false);
@@ -23,7 +21,11 @@ export const FrontPage: React.FC = () => {
                 <ReplyButton buttonText='Yes' />
                 <ReplyButton buttonText='No'/>
             </div>
-            <MathJax.Node tex={tex} />
+            <div className='equation'>
+                <MJ.Context input='tex' onLoad={() => {console.log('LOAD')}} onError={() => {}}>
+                    <MJ.Node inline>{tex}</MJ.Node>
+                </MJ.Context>
+            </div>
         </div>
     )
 }
