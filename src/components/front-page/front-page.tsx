@@ -19,7 +19,7 @@ export const FrontPage: React.FC = () => {
                     Do you remember anything about phasors
                 </div>
                 <ReplyButton buttonText='Yes' />
-                <ReplyButton buttonText='No'/>
+                <ReplyButton buttonText='No' linkTo='/review'/>
             </div>
             <div className='equation'>
                 <MJ.Context input='tex' onLoad={() => {console.log('LOAD')}} onError={() => {}}>

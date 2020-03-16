@@ -1,0 +1,43 @@
+.review-page-title {
+    background-color: green;
+}
+
+.review-page-content {
+    display: grid;
+    grid-template-columns: 500px 150px;
+}
+
+.review-page-buttons {
+    display: flex;
+    margin-right: 50px;
+    margin-top: 10px;
+    justify-content: flex-end;
+}
+
+.euler-first-line {
+    width: 50%;
+}
+
+.euler-page-title {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    &-image {
+        margin-left: 20px;
+    }
+    &-text {
+        margin: auto 0;
+    }
+}
+
+.euler-second-line {
+    display: flex;
+    margin-left: 100px;
+    align-content: flex-start;
+}
+
+.euler-third-line {
+    display: flex;
+    margin-left: 100px;
+    align-content: flex-start; 
+}
