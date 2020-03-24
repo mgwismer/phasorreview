@@ -89,7 +89,7 @@ class Node extends React.Component<IProps & { context: IContext }> {
     }
 
     const text = this.props.children;
-
+    console.log('in node typeset', forceUpdate, this.script);
     if (forceUpdate) {
       this.clear();
     }
@@ -109,6 +109,7 @@ class Node extends React.Component<IProps & { context: IContext }> {
    */
   public setScriptText(text: string) {
     const inline = this.props.inline;
+    console.log('set script text', text, this.props);
     // const type = types[this.context.input];
     const type = 'asciimath';
     if (!this.script) {

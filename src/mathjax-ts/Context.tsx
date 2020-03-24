@@ -1,5 +1,6 @@
 import { IContext, Input, MathJaxUnknown } from '.';
 import React from 'react';
+import { Redirect } from 'react-router';
 
 const loadScript = require('load-script');
 
@@ -37,7 +38,7 @@ class Context extends React.Component<IProps, IState> {
     delay: 0,
     options: {},
     loading: null,
-    noGate: false
+    // noGate: false
   };
 
   constructor(props: any) {
@@ -59,8 +60,23 @@ class Context extends React.Component<IProps, IState> {
   public onLoad() {
     const options = this.props.options;
     const MathJax = (window as any).MathJax;
-
-    MathJax.Hub.Config(options);
+    console.log('options', options, this.props);
+    MathJax.Hub.Config({
+      "HTML-CSS": {
+        preferredFont: null,
+        webFont: null,
+        mtextFontInherit: false,
+        styles: {
+        ".MathJax_Display": {
+          "text-align": "center",
+          margin: "1em 0em",
+          color: "red",
+        },
+        ".MathJax_CHTML": {
+          color: "red",
+        },
+      },
+    }});
 
     MathJax.Hub.Register.StartupHook('End', () => {
       MathJax.Hub.processSectionDelay = this.props.delay;

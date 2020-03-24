@@ -1,6 +1,6 @@
 import React from 'react';
 import { EquationDisplay } from '../EquationDisplay/equation-display';
-import './review-page.scss';
+import './tutorial-page.scss';
 
 const eulerIntro = "The relationship between trigonometric functions, the mathematical constant 'e' and";
 

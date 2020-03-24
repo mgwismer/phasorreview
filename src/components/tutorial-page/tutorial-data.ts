@@ -11,7 +11,7 @@ export type contentType = {
     equation?: string;
 }
 
-export type reviewPageType = {
+export type TutorialPageType = {
     title: string;
     subTitle: string;
     type: string;
@@ -19,9 +19,9 @@ export type reviewPageType = {
     subType?: string;
 }
 
-export type reviewPageArrayType = Array<reviewPageType>
+export type TutorialPageArrayType = Array<TutorialPageType>
 
-export const reviewPage: reviewPageArrayType = [
+export const TutorialPage: TutorialPageArrayType = [
     {
         title: "What is a phasor?",
         subTitle: "Simply a complex number",

@@ -1,17 +1,8 @@
-.review-page-title {
-    background-color: green;
-}
 
-.review-page-content {
+.tutorial-page-content {
     display: grid;
     grid-template-columns: 500px 150px;
-}
-
-.review-page-buttons {
-    display: flex;
-    margin-right: 50px;
-    margin-top: 10px;
-    justify-content: flex-end;
+    text-align: left;
 }
 
 .euler-first-line {

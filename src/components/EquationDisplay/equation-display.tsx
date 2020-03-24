@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import MJ from '../../../src/mathjax-ts';
+import './equation-display.scss';
 
 type OwnProps = {
     equationString: string;

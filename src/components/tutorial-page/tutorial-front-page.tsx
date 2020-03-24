@@ -1,21 +1,20 @@
 import React, { useState, useMemo, useCallback } from 'react';
-import { reviewPage, PageType, contentType } from './review-data';
-import NextImage from '../.././assets/images/next.gif';
-import HomeImage from '../.././assets/images/home.gif';
-import PreviousImage from '../.././assets/images/back.gif';
+import { TutorialPage, PageType, contentType } from './tutorial-data';
 import { EquationDisplay } from '../EquationDisplay/equation-display';
+import { HomeBackForwardBtns } from '../Buttons/home-back-forward-btn';
 import EulerPortrait from '../.././assets/images/euler_portrait.gif';
 import { EulerPage } from './euler-page';
-import './review-page.scss';
+import './tutorial-page.scss';
 import { Redirect } from 'react-router';
 
-export const ReviewFrontPage: React.FC = () => {
+export const TutorialFrontPage: React.FC = () => {
     const [pageIndex, setPageIndex] = useState(0);
     const [isSubPage, setIsSubPage] = useState(false);
     const [redirectToQuizPage, setRedirectToQuizPage] = useState(false);
+    const [redirectToElementReviewPage, setToElementReviewPage] = useState(false);
 
     const currentPage = useMemo(() => {
-        return reviewPage[pageIndex];
+        return TutorialPage[pageIndex];
     }, [pageIndex]);
 
     const handlePreviousPageClicked = useCallback(() => {
@@ -27,7 +26,7 @@ export const ReviewFrontPage: React.FC = () => {
     }, [pageIndex])
 
     const handleHomePageClicked = useCallback(() => {
-        if (pageIndex < reviewPage.length - 1) {
+        if (pageIndex < TutorialPage.length - 1) {
             setPageIndex(pageIndex + 1)
         }
         setRedirectToQuizPage(false);
@@ -35,7 +34,7 @@ export const ReviewFrontPage: React.FC = () => {
     }, [pageIndex])
 
     const handleNextPageClicked = useCallback(() => {
-        if (pageIndex < reviewPage.length - 1) {
+        if (pageIndex < TutorialPage.length - 1) {
             setPageIndex(pageIndex + 1)
         } else {
             setRedirectToQuizPage(true);
@@ -45,14 +44,13 @@ export const ReviewFrontPage: React.FC = () => {
 
     const handleSublinkClicked = useCallback(() => {
         setIsSubPage(true);
-        console.log('handle sub clicked');
     }, [pageIndex])
 
     const currentContent = useMemo(() => {
         if (!isSubPage && currentPage && currentPage.type === PageType.PARAGRAPH) {
             return (
                 <div>
-                    <h2 className='review-page-title'>{currentPage && currentPage.title}</h2>
+                    <h2 className='tutorial-page-title'>{currentPage && currentPage.title}</h2>
                     {currentPage && currentPage.subTitle && 
                         <h4> {currentPage.subTitle} </h4>
                     }
@@ -64,23 +62,25 @@ export const ReviewFrontPage: React.FC = () => {
             const pageContent = currentPage.content;
             return (
                 <div>
-                    <h2 className='review-page-title'>{currentPage && currentPage.title}</h2>
+                    <h2 className='tutorial-page-title'>{currentPage && currentPage.title}</h2>
                     {currentPage && currentPage.subTitle && 
                         <h4> {currentPage.subTitle} </h4>
                     }
                     <ol>
                         {pageContent.map((content: contentType) => {
-                            return <li className='review-page-content'>
-                                <span className='review-page-content-text'>
-                                    {content.text}
-                                    <span className='review-page-subpage' onClick={handleSublinkClicked}>
-                                        {content.subLink || null}
+                            return (
+                                <li className='tutorial-page-content'>
+                                    <span className='tutorial-page-content-text'>
+                                        {content.text}
+                                        <span className='tutorial-page-subpage' onClick={handleSublinkClicked}>
+                                            {content.subLink || null}
+                                        </span>
                                     </span>
-                                </span>
-                                <span className='review-page-content-eqn'>
-                                    {content.equation ? <EquationDisplay equationString={content.equation} /> : null}
-                                </span>
-                            </li>
+                                    <span className='tutorial-page-content-eqn'>
+                                        {content.equation ? <EquationDisplay equationString={content.equation} /> : null}
+                                    </span>
+                                </li>
+                            )
                         })}
                     </ol>
                 </div>
@@ -103,20 +103,19 @@ export const ReviewFrontPage: React.FC = () => {
         return <Redirect to='/quiz' />
     }
 
+    if (redirectToElementReviewPage) {
+        return <Redirect to='elementreview' />
+    }
+
     return (
         <div>
             {currentContent}
-            <div className='review-page-buttons'>
-                <div onClick={handleHomePageClicked}>
-                    <img src={HomeImage} alt='points to next page'/>
-                </div>
-                <div onClick={handlePreviousPageClicked}>
-                    <img src={PreviousImage} alt='points to next page'/>
-                </div>
-                <div onClick={handleNextPageClicked}>
-                    <img src={NextImage} alt='points to next page'/>
-                </div>
-            </div>
+            <div onClick={() => setToElementReviewPage(true)}> Quick Element Review</div>
+            <HomeBackForwardBtns 
+                handleHomePageClicked={handleHomePageClicked}
+                handlePreviousPageClicked={handlePreviousPageClicked}
+                handleNextPageClicked={handleNextPageClicked}
+            />
         </div>
     )
 }
