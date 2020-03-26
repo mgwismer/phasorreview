@@ -1,31 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import LogoImage from '../.././assets/images/ee_symbol1.gif';
 import { ReplyButton } from '../Buttons/reply-button';
-import MJ from '../../../src/mathjax-ts';
-
-const tex = 'U = 1/(R_(si) + sum_(i=1)^n(s_n/lambda_n) + R_(se))';
+import { frontPageStyles } from './front-page-data';
+import { frontPageTypes, frontPagePathTypes, pageLinkTypes } from './front-page-data-type';
 
 export const FrontPage: React.FC = () => {
-    const [answeredYes, setAnsweredYes] = useState(false);
-    const [answeredNo, setAnsweredNo] = useState(false);
-
+    const [currentPage, setCurrentPage] = useState(frontPageTypes.LEAD);
     
+    const frontPageInformation = useMemo(() => {
+        return frontPageStyles[currentPage];
+    }, [currentPage])
+
+    const yesButtonClicked = useCallback(() => {
+        if (currentPage === frontPageTypes.LEAD) {
+            setCurrentPage(frontPageTypes.QUIZ_START);
+        }
+    }, [currentPage])
+
+    const noButtonClicked = useCallback(() => {
+        if(currentPage === frontPageTypes.LEAD) {
+            setCurrentPage(frontPageTypes.TUTORIAL_START)
+        } else if(currentPage === frontPageTypes.QUIZ_START || currentPage === frontPageTypes.TUTORIAL_START) {
+            setCurrentPage(frontPageTypes.REVIEW_START)
+        }
+    }, [currentPage])
+
+    const { text, buttonText, buttonPaths } = frontPageInformation;
+    const { yes: buttonYesText, no: buttonNoText } = buttonText;
+    const { yes: buttonYesPath, no: buttonNoPath } = buttonPaths;
     return (
-        <div>
-            <div className='front-page-ee-symbol'>
-                {/* Front Page */}
-                <img src={LogoImage} width="614" height="168" /> 
-                <div>
-                    Do you remember anything about phasors
-                </div>
-                <ReplyButton buttonText='Yes' />
-                <ReplyButton buttonText='No' linkTo='/review'/>
+        <div className='front-page-ee-symbol'>
+            {/* Front Page */}
+            <img src={LogoImage} width="614" height="168" /> 
+            <div>
+                {text}
             </div>
-            <div className='equation'>
-                <MJ.Context input='tex' onLoad={() => {console.log('LOAD')}} onError={() => {}}>
-                    <MJ.Node inline>{tex}</MJ.Node>
-                </MJ.Context>
-            </div>
+            <ReplyButton buttonText={buttonYesText} nextPath={buttonYesPath.path} buttonType={buttonYesPath.type} buttonAction={yesButtonClicked}/>
+            <ReplyButton buttonText={buttonNoText} nextPath={buttonNoPath.path} buttonType={buttonNoPath.type} buttonAction={noButtonClicked} />
         </div>
     )
 }

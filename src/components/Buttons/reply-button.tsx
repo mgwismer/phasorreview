@@ -1,17 +1,25 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { frontPagePathTypes, pageLinkTypes, frontPageTypes } from '../front-page/front-page-data-type';
 
 type OwnProps = {
     buttonText: string;
-    linkTo?: string;
+    buttonType: frontPagePathTypes;
+    nextPath: frontPageTypes | pageLinkTypes;
     buttonAction?: () => void;
 }
-export const ReplyButton: React.FC<OwnProps> = ({ buttonText, buttonAction, linkTo = '/' }) => {
+export const ReplyButton: React.FC<OwnProps> = ({ buttonText, buttonAction, buttonType, nextPath = '/' }) => {
     return (
         <button onClick={buttonAction}>
-            <NavLink to={linkTo}>
-                {buttonText}
-            </NavLink>
+            {buttonType === frontPagePathTypes.LINKPAGE &&
+                <NavLink to={nextPath}>
+                    {buttonText}
+                </NavLink>
+            }
+            {buttonType === frontPagePathTypes.NEWPAGE && 
+                <div>
+                    {buttonText}
+                </div>}
         </button>
     )
 }

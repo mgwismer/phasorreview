@@ -25,14 +25,6 @@ export const TutorialFrontPage: React.FC = () => {
         setRedirectToQuizPage(false);
     }, [pageIndex])
 
-    const handleHomePageClicked = useCallback(() => {
-        if (pageIndex < TutorialPage.length - 1) {
-            setPageIndex(pageIndex + 1)
-        }
-        setRedirectToQuizPage(false);
-        setIsSubPage(false);
-    }, [pageIndex])
-
     const handleNextPageClicked = useCallback(() => {
         if (pageIndex < TutorialPage.length - 1) {
             setPageIndex(pageIndex + 1)
@@ -104,15 +96,14 @@ export const TutorialFrontPage: React.FC = () => {
     }
 
     if (redirectToElementReviewPage) {
-        return <Redirect to='elementreview' />
+        return <Redirect to='/elementreview' />
     }
 
     return (
         <div>
             {currentContent}
             <div onClick={() => setToElementReviewPage(true)}> Quick Element Review</div>
-            <HomeBackForwardBtns 
-                handleHomePageClicked={handleHomePageClicked}
+            <HomeBackForwardBtns
                 handlePreviousPageClicked={handlePreviousPageClicked}
                 handleNextPageClicked={handleNextPageClicked}
             />

@@ -37,7 +37,7 @@ export const capacitorTableData: tableReviewType = {
                 equation: 'beta = phi+90',
             },
             {
-                text: `Defining phasors <span>V&#770;<sub>m</sub></span> = V<sub>m</sub>e <sup> j\u03B8</sup> and <span>I&#770;<sub>m</sub></span> = I<sub>m</sub>e <sup> j\u03B2</sup>`,
+                text: `Defining phasors V&#770<sub>m</sub> = V<sub>m</sub>e <sup> j\u03B8</sup> and <span>I&#770;<sub>m</sub></span> = I<sub>m</sub>e <sup> j\u03B2</sup>`,
                 equation: 'hat{I}_m = j omega C hat{V}_m or hat{V}_m = -j frac{1}{omega C} hat{I}_m'
             }
         ],

@@ -19,10 +19,6 @@ export const ElementReview: React.FC = () => {
         console.log('wait');
     }, []);
 
-    const handleHomePageClicked = useCallback(() => {
-        console.log('wait');
-    }, []);
-
     const handleNextPageClicked = useCallback(() => {
         if (reviewPageType === ReviewPageTypes.REVIEW) {
             setReviewPageType(ReviewPageTypes.RESISTOR);
@@ -40,7 +36,6 @@ export const ElementReview: React.FC = () => {
             return (
                 <React.Fragment>
                     <div>
-                        <div>2</div>
                         <img src={ReviewChart} alt='review chart' />
                         <div onClick={() => setReviewPageType(ReviewPageTypes.RESISTOR)}> Phasor review for resistors </div>
                     </div>
@@ -57,8 +52,7 @@ export const ElementReview: React.FC = () => {
     return (
         <div>
             {currentContent}
-            <HomeBackForwardBtns 
-                handleHomePageClicked={handleHomePageClicked}
+            <HomeBackForwardBtns
                 handlePreviousPageClicked={handlePreviousPageClicked}
                 handleNextPageClicked={handleNextPageClicked}
             /> 

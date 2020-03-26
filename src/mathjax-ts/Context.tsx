@@ -60,7 +60,6 @@ class Context extends React.Component<IProps, IState> {
   public onLoad() {
     const options = this.props.options;
     const MathJax = (window as any).MathJax;
-    console.log('options', options, this.props);
     MathJax.Hub.Config({
       "HTML-CSS": {
         preferredFont: null,

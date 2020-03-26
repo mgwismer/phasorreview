@@ -9,7 +9,7 @@ type OwnProps = {
 export const EquationDisplay: React.FC<OwnProps> = ({ equationString }) => {
     return (
     <span className='equation'>
-        <MJ.Context input='tex' onLoad={() => {console.log('LOAD')}} onError={() => {}}>
+        <MJ.Context input='tex' onLoad={() => {}} onError={() => {}}>
             <MJ.Node inline>{equationString}</MJ.Node>
         </MJ.Context>
     </span>
