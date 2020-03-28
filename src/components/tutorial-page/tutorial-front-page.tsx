@@ -1,18 +1,20 @@
-import React, { useState, useMemo, useCallback } from 'react';
+import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import { TutorialPage, PageType, contentType } from './tutorial-data';
 import { EquationDisplay } from '../EquationDisplay/equation-display';
 import { HomeBackForwardBtns } from '../Buttons/home-back-forward-btn';
 import EulerPortrait from '../.././assets/images/euler_portrait.gif';
 import { EulerPage } from './euler-page';
-import './tutorial-page.scss';
 import { Redirect } from 'react-router';
+import Parser from 'html-react-parser';
+import { pageLinkTypes } from '../front-page/front-page-data-type';
+import './tutorial-page.scss';
 
 export const TutorialFrontPage: React.FC = () => {
     const [pageIndex, setPageIndex] = useState(0);
     const [isSubPage, setIsSubPage] = useState(false);
     const [redirectToQuizPage, setRedirectToQuizPage] = useState(false);
     const [redirectToElementReviewPage, setToElementReviewPage] = useState(false);
-
+    
     const currentPage = useMemo(() => {
         return TutorialPage[pageIndex];
     }, [pageIndex]);
@@ -41,28 +43,34 @@ export const TutorialFrontPage: React.FC = () => {
     const currentContent = useMemo(() => {
         if (!isSubPage && currentPage && currentPage.type === PageType.PARAGRAPH) {
             return (
-                <div>
-                    <h2 className='tutorial-page-title'>{currentPage && currentPage.title}</h2>
+                <div className='tutorial-page-content'>
+                    <h2 className='tutorial-page-content-title'>{currentPage && currentPage.title}</h2>
                     {currentPage && currentPage.subTitle && 
-                        <h4> {currentPage.subTitle} </h4>
+                        <h4 className='tutorial-page-content-subtitle'> {currentPage.subTitle} </h4>
                     }
-                    {currentPage.content[0].text}
+                    {currentPage.content.map(contentObject => {
+                        return (
+                            <div className='tutorial-page-content-text'>
+                                {Parser(contentObject.text)}
+                            </div>
+                        )
+                    })}
                 </div>
             )
         }
         if (!isSubPage && currentPage && currentPage.type === PageType.LIST) {
             const pageContent = currentPage.content;
             return (
-                <div>
-                    <h2 className='tutorial-page-title'>{currentPage && currentPage.title}</h2>
+                <div className='tutorial-page-content' >
+                    <h2 className='tutorial-page-content-title'>{currentPage && currentPage.title}</h2>
                     {currentPage && currentPage.subTitle && 
-                        <h4> {currentPage.subTitle} </h4>
+                        <h4 className='tutorial-page-content-subtitle'> {currentPage.subTitle} </h4>
                     }
                     <ol>
                         {pageContent.map((content: contentType) => {
                             return (
-                                <li className='tutorial-page-content'>
-                                    <span className='tutorial-page-content-text'>
+                                <li className='tutorial-page-content-grid'>
+                                    <span>
                                         {content.text}
                                         <span className='tutorial-page-subpage' onClick={handleSublinkClicked}>
                                             {content.subLink || null}
@@ -91,22 +99,19 @@ export const TutorialFrontPage: React.FC = () => {
         }
     }, [pageIndex, currentPage, isSubPage])
 
-    if (redirectToQuizPage) {
-        return <Redirect to='/quiz' />
-    }
-
     if (redirectToElementReviewPage) {
-        return <Redirect to='/elementreview' />
-    }
-
-    return (
-        <div>
-            {currentContent}
-            <div onClick={() => setToElementReviewPage(true)}> Quick Element Review</div>
-            <HomeBackForwardBtns
-                handlePreviousPageClicked={handlePreviousPageClicked}
-                handleNextPageClicked={handleNextPageClicked}
-            />
-        </div>
-    )
+        return <Redirect to={pageLinkTypes.REVIEW} />
+    } else if (redirectToQuizPage) {
+        return <Redirect to={pageLinkTypes.QUIZ} />
+    } else {
+        return (
+            <div className='tutorial-page'>
+                {currentContent}
+                <div onClick={() => setToElementReviewPage(true)}> Quick Element Review</div>
+                <HomeBackForwardBtns
+                    handlePreviousPageClicked={handlePreviousPageClicked}
+                    handleNextPageClicked={handleNextPageClicked}
+                />
+            </div>
+    )}
 }

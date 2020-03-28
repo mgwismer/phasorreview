@@ -14,9 +14,10 @@ function App() {
   return (
     <div className="App">
       <Router>
+        <Route path={'/frontpage:subpath'} component={FrontPage} />
         <Route exact path={'/'} component={FrontPage} />
-        <Route path={pageLinkTypes.TUTORIAL} component={TutorialFrontPage} />
-        <Route path={pageLinkTypes.QUIZ} component={QuizFrontPage} />
+        <Route exact path={pageLinkTypes.TUTORIAL} component={TutorialFrontPage} />
+        <Route exact path={pageLinkTypes.QUIZ} component={QuizFrontPage} />
         <Route path={pageLinkTypes.REVIEW} component={ElementReview} />
       </Router>
     </div>

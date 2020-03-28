@@ -11,6 +11,7 @@ export enum frontPagePathTypes {
 }
 
 export enum pageLinkTypes {
+    FRONTPAGE = '/frontpage',
     QUIZ = '/quizPage',
     REVIEW = '/review',
     TUTORIAL ='/tutorial'

@@ -1,5 +1,6 @@
 import { tableReviewType } from "../Components/review-table-data";
 import InductorGraphVI from '../../../assets/images/phasor11_graph.gif';
+import { ejwt, ejbeta, ejtheta } from "../../../constants/expressions";
 
 export const inductorTableData: tableReviewType = {
     tableSteps:
@@ -25,7 +26,7 @@ export const inductorTableData: tableReviewType = {
                 equation: 'V_m e^(j omega t) e^(j phi) = j omega L I_m e^(jomega t)  e^(j beta)'
             },
             {
-                text: `Suppressing e <sup> j\u03C9t </sup>`,
+                text: `Suppressing ${ejwt}`,
                 equation: 'V_m e^(j phi) = j omega L I_m e^(j beta)'
             },
             {
@@ -37,7 +38,7 @@ export const inductorTableData: tableReviewType = {
                 equation: 'phi = beta+90',
             },
             {
-                text: `Defining phasors <span>V&#770;<sub>m</sub></span> = V<sub>m</sub>e <sup> j\u03B8</sup> and <span>I&#770;<sub>m</sub></span> = I<sub>m</sub>e <sup> j\u03B2</sup>`,
+                text: `Defining phasors <span>V&#770;<sub>m</sub></span> = V<sub>m</sub>${ejtheta} and <span>I&#770;<sub>m</sub></span> = I<sub>m</sub>${ejbeta}`,
                 equation: 'hat{V}_m = j omega L hat{I}_m or hat{V}_m'
             }
         ],

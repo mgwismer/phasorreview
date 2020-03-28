@@ -1,5 +1,6 @@
 import { tableReviewType } from "../Components/review-table-data";
 import CapacitorGraphVI from '../../../assets/images/phasor12_graph.gif';
+import { ejwt, ejtheta, ejbeta } from '../../../constants/expressions';
 
 export const capacitorTableData: tableReviewType = {
     tableSteps: 
@@ -25,7 +26,7 @@ export const capacitorTableData: tableReviewType = {
                 equation: 'I_m e^(j omega t) e^(j beta) = j omega C V_m e^(jomega t)  e^(j phi)'
             },
             {
-                text: `Suppressing e <sup> j\u03C9t </sup>`,
+                text: `Suppressing $`,
                 equation: 'I_m e^(j beta) = j omega C V_m e^(j phi)'
             },
             {
@@ -37,7 +38,7 @@ export const capacitorTableData: tableReviewType = {
                 equation: 'beta = phi+90',
             },
             {
-                text: `Defining phasors V&#770<sub>m</sub> = V<sub>m</sub>e <sup> j\u03B8</sup> and <span>I&#770;<sub>m</sub></span> = I<sub>m</sub>e <sup> j\u03B2</sup>`,
+                text: `Defining phasors V&#770<sub>m</sub> = V<sub>m</sub>${ejtheta} and <span>I&#770;<sub>m</sub></span> = I<sub>m</sub>${ejbeta}`,
                 equation: 'hat{I}_m = j omega C hat{V}_m or hat{V}_m = -j frac{1}{omega C} hat{I}_m'
             }
         ],

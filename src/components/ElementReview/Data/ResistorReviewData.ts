@@ -1,5 +1,6 @@
 import { tableReviewType } from "../Components/review-table-data";
 import ResistorGraphVI from '../../../assets/images/phasor10_graph.gif';
+import { ejwt } from "../../../constants/expressions";
 
 export const resistorTableData: tableReviewType = {
     tableSteps: 
@@ -25,7 +26,7 @@ export const resistorTableData: tableReviewType = {
                 equation: 'V_m e^(j(omega t + theta)) = R I_m e^(j(omega t + beta))'
             },
             {
-                text: `Suppressing e <sup> j\u03C9t </sup>`,
+                text: `Suppressing ${ejwt}`,
                 equation: 'V_m e^(j theta) = R I_m e^(j beta)'
             },
             {
