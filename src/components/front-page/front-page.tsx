@@ -3,21 +3,19 @@ import LogoImage from '../.././assets/images/ee_symbol1.gif';
 import { ReplyButton } from '../Buttons/reply-button';
 import { frontPageStyles } from './front-page-data';
 import { frontPageTypes, frontPagePathTypes, pageLinkTypes } from './front-page-data-type';
-import { useParams } from 'react-router';
+import { useLocation } from 'react-router';
 
 export const FrontPage: React.FC = () => {
 
-    let { subpath } = useParams();
-    console.log('subpath', useParams)
+    const { state } = useLocation();
 
-    const startPath = useMemo(() => {
-        console.log('memo subpath', subpath);
-        return !subpath ? frontPageTypes.LEAD : subpath;
-    }, [subpath])
-    const [currentPage, setCurrentPage] = useState(frontPageTypes.LEAD);
+    const startPath = !!state && typeof state === 'string' ? state : frontPageTypes.LEAD;
+
+    const [currentPage, setCurrentPage] = useState<string>(startPath);
+
+    console.log('subpath', typeof startPath, typeof state, typeof frontPageTypes.LEAD);
     
     const frontPageInformation = useMemo(() => {
-        console.log('currentPage', currentPage)
         return frontPageStyles[currentPage];
     }, [currentPage])
 

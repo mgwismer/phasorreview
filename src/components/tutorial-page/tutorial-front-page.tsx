@@ -6,7 +6,7 @@ import EulerPortrait from '../.././assets/images/euler_portrait.gif';
 import { EulerPage } from './euler-page';
 import { Redirect } from 'react-router';
 import Parser from 'html-react-parser';
-import { pageLinkTypes } from '../front-page/front-page-data-type';
+import { pageLinkTypes, frontPageTypes } from '../front-page/front-page-data-type';
 import './tutorial-page.scss';
 
 export const TutorialFrontPage: React.FC = () => {
@@ -101,8 +101,11 @@ export const TutorialFrontPage: React.FC = () => {
 
     if (redirectToElementReviewPage) {
         return <Redirect to={pageLinkTypes.REVIEW} />
-    } else if (redirectToQuizPage) {
-        return <Redirect to={pageLinkTypes.QUIZ} />
+    } else if (redirectToQuizPage) { //Redirecting to quiz question on front page
+        return <Redirect to={{
+            pathname: '/',
+            state: frontPageTypes.QUIZ_START,
+        }} />
     } else {
         return (
             <div className='tutorial-page'>

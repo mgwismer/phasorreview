@@ -18,7 +18,7 @@ export enum pageLinkTypes {
 };
 
 export type frontPageStylesType = {
-    [key in frontPageTypes]: {
+    [key in frontPageTypes | string]: {
         text: string;
         buttonText: {
             yes: string;

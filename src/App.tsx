@@ -14,7 +14,6 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Route path={'/frontpage:subpath'} component={FrontPage} />
         <Route exact path={'/'} component={FrontPage} />
         <Route exact path={pageLinkTypes.TUTORIAL} component={TutorialFrontPage} />
         <Route exact path={pageLinkTypes.QUIZ} component={QuizFrontPage} />
