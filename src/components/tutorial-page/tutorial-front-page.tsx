@@ -101,7 +101,7 @@ export const TutorialFrontPage: React.FC = () => {
 
     if (redirectToElementReviewPage) {
         return <Redirect to={pageLinkTypes.REVIEW} />
-    } else if (redirectToQuizPage) { //Redirecting to quiz question on front page
+    } else if (redirectToQuizPage) { //End of tutorial prompts for quiz start
         return <Redirect to={{
             pathname: '/',
             state: frontPageTypes.QUIZ_START,

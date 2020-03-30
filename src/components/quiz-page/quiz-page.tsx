@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useState, useCallback } from 'react';
 import Parser from "html-react-parser";
 import { quizQuestionType } from './quiz-question-type';
 

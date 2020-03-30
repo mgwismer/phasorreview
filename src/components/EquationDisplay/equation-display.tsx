@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import MJ from '../../../src/mathjax-ts';
 import './equation-display.scss';
 

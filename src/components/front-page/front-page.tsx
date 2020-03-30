@@ -2,7 +2,7 @@ import React, { useState, useMemo, useCallback } from 'react';
 import LogoImage from '../.././assets/images/ee_symbol1.gif';
 import { ReplyButton } from '../Buttons/reply-button';
 import { frontPageStyles } from './front-page-data';
-import { frontPageTypes, frontPagePathTypes, pageLinkTypes } from './front-page-data-type';
+import { frontPageTypes } from './front-page-data-type';
 import { useLocation } from 'react-router';
 
 export const FrontPage: React.FC = () => {
@@ -39,7 +39,7 @@ export const FrontPage: React.FC = () => {
     return (
         <div className='front-page-ee-symbol'>
             {/* Front Page */}
-            <img src={LogoImage} width="614" height="168" /> 
+            <img src={LogoImage} width="614" height="168" alt='logo image'/> 
             <div>
                 {text}
             </div>

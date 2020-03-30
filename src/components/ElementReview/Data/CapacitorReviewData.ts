@@ -26,7 +26,7 @@ export const capacitorTableData: tableReviewType = {
                 equation: 'I_m e^(j omega t) e^(j beta) = j omega C V_m e^(jomega t)  e^(j phi)'
             },
             {
-                text: `Suppressing $`,
+                text: `Suppressing ${ejwt}`,
                 equation: 'I_m e^(j beta) = j omega C V_m e^(j phi)'
             },
             {

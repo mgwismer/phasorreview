@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import NextImage from '../.././assets/images/next.gif';
 import HomeImage from '../.././assets/images/home.gif';
 import PreviousImage from '../.././assets/images/back.gif';
