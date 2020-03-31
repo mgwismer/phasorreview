@@ -6,8 +6,8 @@ import { QuizPage } from './quiz-page';
 import { AppState, ReduxBaseAction } from '../../redux/reducer';
 import { increaseQuestionIndex } from '../../redux/actions';
 
-export const QuizFrontPage: React.FC<QuestionProps> = ({
-    questionIndex,
+const QuizFrontPage: React.FC<QuestionProps> = ({
+    questionIndex = 0,
     increaseQuestionIndex,
 }) => {
 
@@ -17,8 +17,8 @@ export const QuizFrontPage: React.FC<QuestionProps> = ({
 }
 
 const mapStateToProps = (state: AppState) => ({
-    questionIndex: state.questionIndex
-});
+        questionIndex: state.questionIndex
+    });
 
 const mapDispatchToProps = (dispatch: Dispatch<ReduxBaseAction>) =>
     bindActionCreators({ increaseQuestionIndex }, dispatch);

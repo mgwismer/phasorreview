@@ -16,7 +16,7 @@ export const ReviewPageTypes = {
     INDUCTOR: 'INDUCTORREVIEW',
 }
 
-export const ElementReview: React.FC = () => {
+const ElementReview: React.FC = () => {
     const [reviewPageType, setReviewPageType] = useState(ReviewPageTypes.REVIEW);
 
     const handlePreviousPageClicked = useCallback(() => {

@@ -6,9 +6,9 @@ import {
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { FrontPage } from './components/front-page/front-page';
-import { QuizFrontPage } from './components/quiz-page/quiz-front-page';
+import QuizFrontPage from './components/quiz-page/quiz-front-page';
 import { TutorialFrontPage } from './components/tutorial-page/tutorial-front-page';
-import { ElementReview } from './components/ElementReview/Components/element-review';
+import ElementReview from './components/ElementReview/Components/element-review';
 import { pageLinkTypes } from './components/front-page/front-page-data-type';
 import { rootReducer, InitialState } from './redux/reducer';
 import './App.scss';

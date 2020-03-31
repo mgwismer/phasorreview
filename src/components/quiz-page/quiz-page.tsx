@@ -29,7 +29,7 @@ export const QuizPage: React.FC<OwnProps> = ({ quizQuestion }) => {
                                     type='radio'  
                                     value={index}
                                     name='choice'
-                                    checked={selectedAnswer === +index}
+                                    checked={+selectedAnswer === index}
                                     onChange={handleChange}
                                 />
                                 {choice}
