@@ -4,6 +4,7 @@ import { quizQuestionType } from './quiz-question-type';
 
 type OwnProps = {
     quizQuestion: quizQuestionType;
+    setIndex: () => void;
 }
 export const QuizPage: React.FC<OwnProps> = ({ quizQuestion }) => {
     const [selectedAnswer, setSelectedAnswer] = useState<number>(100)
@@ -12,27 +13,6 @@ export const QuizPage: React.FC<OwnProps> = ({ quizQuestion }) => {
     const handleChange = useCallback(event => {
         setSelectedAnswer(event.target.value);
     }, [])
-
-    // const answers = useMemo(() => {
-    //     console.log('use memo', selectedAnswer);
-    //     return (
-    //         <ul>
-    //             {answerChoices.map((choice, index) => 
-    //                 <li>
-    //                     <label>
-    //                         <input 
-    //                             type='radio'  
-    //                             value={index}
-    //                             checked={selectedAnswer === index}
-    //                             onChange={handleChange}
-    //                         />
-    //                         {choice}
-    //                     </label>
-    //                 </li>
-    //             )}
-    //         </ul>
-    //     )
-    // },[selectedAnswer])
 
     return (
         <div>

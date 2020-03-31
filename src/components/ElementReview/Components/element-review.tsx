@@ -1,9 +1,13 @@
 import React, { useState, useMemo, useCallback } from 'react';
+import { bindActionCreators, Dispatch } from 'redux';
+import { connect } from 'react-redux';
+import { AppState, ReduxBaseAction } from '../../../redux/reducer';
 import { ResistorReviewPage } from './resistor-review-page';
 import { CapacitorReviewPage } from './capacitor-review-page';
 import { InductorReviewPage } from './inductor-review-page';
 import { HomeBackForwardBtns } from '../../Buttons/home-back-forward-btn';
 import ReviewChart from '../../../assets/images/review5-1.gif';
+import { resetQuestionIndex } from '../../../redux/actions';
 
 export const ReviewPageTypes = {
     REVIEW: 'REVIEW',
@@ -59,3 +63,17 @@ export const ElementReview: React.FC = () => {
         </div>
     )
 }
+
+const mapStateToProps = (state: AppState) => ({
+    questionIndex: state.questionIndex
+});
+
+const mapDispatchToProps = (dispatch: Dispatch<ReduxBaseAction>) =>
+    bindActionCreators({ resetQuestionIndex }, dispatch);
+
+type ElementReviewProps = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>;
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(ElementReview)

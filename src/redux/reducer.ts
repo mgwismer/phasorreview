@@ -14,8 +14,10 @@ export const InitialState: AppState = {
 
 export const rootReducer = (state: AppState = InitialState, action: ReduxBaseAction) => {
     switch(action.type) {
-        case ReduxActionTypes.SET_QUESTION_INDEX:
+        case ReduxActionTypes.INCREASE_QUESTION_INDEX:
             return {...state, questionIndex: state.questionIndex+1};
+        case ReduxActionTypes.RESET_QUESTION_INDEX:
+            return {...state, questionIndex: 0}
         default:
             return state;
     }

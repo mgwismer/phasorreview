@@ -12,8 +12,6 @@ export const FrontPage: React.FC = () => {
     const startPath = !!state && typeof state === 'string' ? state : frontPageTypes.LEAD;
 
     const [currentPage, setCurrentPage] = useState<string>(startPath);
-
-    console.log('subpath', typeof startPath, typeof state, typeof frontPageTypes.LEAD);
     
     const frontPageInformation = useMemo(() => {
         return frontPageStyles[currentPage];
