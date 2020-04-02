@@ -1,5 +1,6 @@
 import { quizQuestionsType } from "./quiz-question-type";
 import CircuitProblemImage from '../../assets/images/review3-3.gif';
+import InductorTimeTrace from '../../assets/images/review6.gif';
 
 export const quizQuestions: quizQuestionsType = [
     {
@@ -15,5 +16,18 @@ export const quizQuestions: quizQuestionsType = [
             'i(t) = 1.24 cos(300t-33\u00B0)'
         ],
         correctAnswer: 2,
+    },
+    {
+        title: 'The real time trace',
+        text: 'The voltage across and current through an element are shown below. Determine if the element is an inductor or capacitor.',
+        question: 'Which element does this scope trace belong to?',
+        image: `${InductorTimeTrace}`,
+        questionAnswerType: 'string',
+        answerChoices: [
+            'inductor',
+            'resistor',
+            'capacitor'
+        ],
+        correctAnswer: 0,
     }
 ]

@@ -10,7 +10,7 @@ type OwnProps = {
 }
 export const ReplyButton: React.FC<OwnProps> = ({ buttonText, buttonAction, buttonType, nextPath = '/' }) => {
     return (
-        <button onClick={buttonAction}>
+        <button className='reply-button' onClick={buttonAction}>
             {buttonType === frontPagePathTypes.LINKPAGE &&
                 <NavLink to={nextPath}>
                     {buttonText}

@@ -12,3 +12,9 @@ export function resetQuestionIndex(): ReduxBaseAction {
         type: ReduxActionTypes.RESET_QUESTION_INDEX
     };
 }
+
+export function setQuizStart(): ReduxBaseAction {
+    return {
+        type: ReduxActionTypes.SET_QUIZ_START
+    };
+}

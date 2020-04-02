@@ -7,7 +7,9 @@ import { CapacitorReviewPage } from './capacitor-review-page';
 import { InductorReviewPage } from './inductor-review-page';
 import { HomeBackForwardBtns } from '../../Buttons/home-back-forward-btn';
 import ReviewChart from '../../../assets/images/review5-1.gif';
-import { resetQuestionIndex } from '../../../redux/actions';
+import { increaseQuestionIndex, resetQuestionIndex } from '../../../redux/actions';
+import { pageLinkTypes } from '../../front-page/front-page-data-type';
+import { Redirect } from 'react-router';
 
 export const ReviewPageTypes = {
     REVIEW: 'REVIEW',
@@ -16,12 +18,22 @@ export const ReviewPageTypes = {
     INDUCTOR: 'INDUCTORREVIEW',
 }
 
-const ElementReview: React.FC = () => {
+const ElementReview: React.FC<ElementReviewProps> = ({ 
+    questionIndex,
+    quizStarted,
+    increaseQuestionIndex,
+ }) => {
     const [reviewPageType, setReviewPageType] = useState(ReviewPageTypes.REVIEW);
+    const [goToQuizPage, setGoToQuizPage] = useState(false);
 
     const handlePreviousPageClicked = useCallback(() => {
         console.log('wait');
     }, []);
+
+    const goToNextQuizQuestion = useCallback(() => {
+        increaseQuestionIndex()
+        setGoToQuizPage(true);
+    }, [])
 
     const handleNextPageClicked = useCallback(() => {
         if (reviewPageType === ReviewPageTypes.REVIEW) {
@@ -53,23 +65,36 @@ const ElementReview: React.FC = () => {
             return <InductorReviewPage />
         }, [reviewPageType])
 
+    if (goToQuizPage) {
+        return <Redirect to={pageLinkTypes.QUIZ} />
+    }
     return (
         <div>
             {currentContent}
-            <HomeBackForwardBtns
-                handlePreviousPageClicked={handlePreviousPageClicked}
-                handleNextPageClicked={handleNextPageClicked}
-            /> 
+            {(questionIndex === 0) && 
+                <HomeBackForwardBtns
+                    handlePreviousPageClicked={handlePreviousPageClicked}
+                    handleNextPageClicked={handleNextPageClicked}
+                /> 
+            }
+            {(quizStarted) &&
+                <div>
+                    <button className='element-review-button' onClick={goToNextQuizQuestion} >
+                        Are you ready for next quiz question?
+                    </button>
+                </div>
+            }
         </div>
     )
 }
 
 const mapStateToProps = (state: AppState) => ({
-    questionIndex: state.questionIndex
+    questionIndex: state.questionIndex,
+    quizStarted: state.quizStarted,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<ReduxBaseAction>) =>
-    bindActionCreators({ resetQuestionIndex }, dispatch);
+    bindActionCreators({ resetQuestionIndex, increaseQuestionIndex }, dispatch);
 
 type ElementReviewProps = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>;
 

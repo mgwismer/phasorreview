@@ -9,7 +9,11 @@ import Parser from 'html-react-parser';
 import { pageLinkTypes, frontPageTypes } from '../front-page/front-page-data-type';
 import './tutorial-page.scss';
 
-export const TutorialFrontPage: React.FC = () => {
+type OwnProps = {
+    directedFromQuiz: boolean;
+}
+
+export const TutorialFrontPage: React.FC<OwnProps> = ({ directedFromQuiz = false}) => {
     const [pageIndex, setPageIndex] = useState(0);
     const [isSubPage, setIsSubPage] = useState(false);
     const [redirectToQuizPage, setRedirectToQuizPage] = useState(false);
@@ -30,7 +34,9 @@ export const TutorialFrontPage: React.FC = () => {
     const handleNextPageClicked = useCallback(() => {
         if (pageIndex < TutorialPage.length - 1) {
             setPageIndex(pageIndex + 1)
-        } else {
+        } else if (directedFromQuiz) {
+            setToElementReviewPage(true);
+        }else {
             setRedirectToQuizPage(true);
         }
         setIsSubPage(false);

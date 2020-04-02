@@ -4,9 +4,9 @@ import { quizQuestionType } from './quiz-question-type';
 
 type OwnProps = {
     quizQuestion: quizQuestionType;
-    setIndex: () => void;
+    handleAnswerSubmit: (answer: number) => void;
 }
-export const QuizPage: React.FC<OwnProps> = ({ quizQuestion }) => {
+export const QuizPage: React.FC<OwnProps> = ({ quizQuestion, handleAnswerSubmit }) => {
     const [selectedAnswer, setSelectedAnswer] = useState<number>(100)
     const { title, text, question, image, questionAnswerType, answerChoices } = quizQuestion;
 
@@ -14,13 +14,16 @@ export const QuizPage: React.FC<OwnProps> = ({ quizQuestion }) => {
         setSelectedAnswer(event.target.value);
     }, [])
 
+    const handleSubmit = useCallback(() => {
+        handleAnswerSubmit(selectedAnswer);
+    }, [selectedAnswer, handleAnswerSubmit]);
+
     return (
         <div>
             <div>{title}</div>
             <div>{Parser(text)}</div>
             <img src={image} alt='question image' />
             <div>{Parser(question)}</div>
-                {selectedAnswer}
                 <div>
                     {answerChoices.map((choice, index) => 
                         <div>
@@ -37,6 +40,8 @@ export const QuizPage: React.FC<OwnProps> = ({ quizQuestion }) => {
                         </div>
                     )}
                 </div>
+                {(selectedAnswer !== 100) && 
+                    <button value='SUBMIT' onClick={handleSubmit}> SUBMIT </button>}
         </div>
     )
 }
