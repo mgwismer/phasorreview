@@ -2,7 +2,7 @@ export enum frontPageTypes {
     LEAD = 'LeadPage',
     REVIEW_START = 'Review',
     TUTORIAL_START = 'Tutorial',
-    QUIZ_START = 'Quiz'
+    QUIZ_START = 'Quiz',
 }
 
 export enum frontPagePathTypes {
@@ -14,7 +14,9 @@ export enum pageLinkTypes {
     FRONTPAGE = '/frontpage',
     QUIZ = '/quizPage',
     REVIEW = '/review',
-    TUTORIAL ='/tutorial'
+    TUTORIAL ='/tutorial',
+    IMPEDANCEREVIEW = '/impedance',
+    IMPEDANCETUT = '/impedancetut'
 };
 
 export type frontPageStylesType = {

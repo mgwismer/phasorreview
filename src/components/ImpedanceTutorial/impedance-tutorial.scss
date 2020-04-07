@@ -1,0 +1,47 @@
+.impedance-tutorial {
+    font-family: sans-serif;
+    background-color: black;
+    padding-top: 20px;
+
+    &-title {
+        background-color: black;
+        display: flex;
+        justify-content: center;
+
+        &-leftimage {
+            margin-right: 60px;
+        }
+        &-rightimage {
+            margin-left: 60px;
+        }
+    }
+
+    &-faces-row {
+        display: flex;
+        justify-content: space-evenly;
+        margin: auto 0;
+    }
+    &-text {
+        width: 80%;
+        justify-content: left;
+        text-align: left;
+        margin-left: 30px;
+
+        li {
+            margin-left: 30px;
+        }
+    }
+
+    &-composite {
+        width: 80%;
+        margin-left: 30px;
+        margin-top: 30px;
+        display: flex;
+    }
+
+    &-red-asterisk {
+        font-size: 3em;
+        color: red;
+        margin-top: -10px;
+    }
+}

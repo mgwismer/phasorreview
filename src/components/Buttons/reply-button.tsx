@@ -5,7 +5,7 @@ import { frontPagePathTypes, pageLinkTypes, frontPageTypes } from '../front-page
 type OwnProps = {
     buttonText: string;
     buttonType: frontPagePathTypes;
-    nextPath: frontPageTypes | pageLinkTypes;
+    nextPath?: frontPageTypes | pageLinkTypes;
     buttonAction?: () => void;
 }
 export const ReplyButton: React.FC<OwnProps> = ({ buttonText, buttonAction, buttonType, nextPath = '/' }) => {

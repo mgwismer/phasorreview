@@ -3,11 +3,11 @@
   background-color: black;
   color: white;
   height: 1200px;
+  width: 100%;
+  display: inline-block;
 }
 
 .App-header {
-  background-color: green;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   font-size: calc(10px + 2vmin);
