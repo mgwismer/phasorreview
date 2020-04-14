@@ -1,0 +1,37 @@
+.quiz-page {
+    margin-top: 20px;
+    text-align: left;
+    width: 70%;
+
+    &-reply-button {
+        margin-left: 50%;
+    }
+    
+    &-reply-buttons {
+        display: flex;
+        margin-left: 40%;
+    }
+
+    &-text {
+        margin: 10px 0 10px 70px;
+    }
+
+    &-title {
+        margin-top: 10px;
+        text-align: center;
+        font-size: 1.5em;
+    }
+
+    &-image {
+        margin-left: 40%;
+    }
+
+    &-solution-image {
+        margin-left: 15%;
+        margin-top: 15px;
+    }
+
+    &-answer {
+        margin-bottom: 10px;
+    }
+}

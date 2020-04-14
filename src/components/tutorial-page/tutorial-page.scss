@@ -16,6 +16,16 @@
     }
     &-subtitle {
         text-align: center;
+        font-style: italic;
+    }
+
+    &-subpage {
+        color: yellow;
+        cursor: pointer;
+    }
+
+    &-highlight {
+        color: yellow;
     }
 }
 

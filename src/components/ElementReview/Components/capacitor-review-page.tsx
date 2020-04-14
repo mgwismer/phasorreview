@@ -6,7 +6,6 @@ import CapacitorTimeVIEqn from '../../../assets/images/phasor12-12.gif';
 import CapacitorPhasorVI from '../../../assets/images/phasor12-2.gif';
 import CapacitorPhasorVIEqn from '../../../assets/images/phasor12-13.gif';
 import RightArrow from '../../../assets/images/phasor10-13.gif';
-import CapacitorGraphVI from '../../../assets/images/phasor12_graph.gif';
 
 export const CapacitorReviewPage: React.FC = () => {
     const header = 

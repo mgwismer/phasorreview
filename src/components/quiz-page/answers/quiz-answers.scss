@@ -1,0 +1,26 @@
+.quiz-solution {
+    margin-left: 30px;
+    text-align: left;
+    font-size: 1.2em;
+
+    &-title {
+        text-align: center;
+    }
+    
+    &-composite {
+        display: flex;
+
+        img {
+            margin-left: 100px;
+        }
+    }
+
+    &-link {    
+        color: red;
+        text-align: center;
+        margin: 0 auto;
+        margin-bottom: 30px;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}

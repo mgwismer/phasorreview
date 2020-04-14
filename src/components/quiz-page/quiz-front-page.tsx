@@ -1,23 +1,25 @@
 import React, { useCallback, useState, useMemo, useEffect } from 'react';
 import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
+import { statement } from '@babel/template';
+import { Redirect } from 'react-router';
 import { quizQuestions } from './QuizQuestions';
 import { QuizPage } from './quiz-page';
-import { AppState, ReduxBaseAction } from '../../redux/reducer';
-import { setQuizStart } from '../../redux/actions';
+import { AppState, ReduxActions } from '../../redux/reducer';
+import { setQuizStart, setAnswerSubmitted } from '../../redux/actions';
 import { QuizSolution } from './answers/question-solution-wrapper';
 
 const QuizFrontPage: React.FC<QuestionProps> = ({
     questionIndex,
-    setQuizStart
+    answerSubmittedFlag,
+    setQuizStart,
+    setAnswerSubmitted,
 }) => {
-
-    const [answerSubmitted, setAnswerSubmitted] = useState(false);
     const [answerIndex, setAnswerIndex] = useState(100);
 
     let correctAnswer = quizQuestions[questionIndex].correctAnswer;
     useEffect(() => {
-        setQuizStart()
+        setQuizStart(true)
     }, []);
 
     const handleAnswerSubmit = useCallback(answerChoice => {
@@ -26,15 +28,20 @@ const QuizFrontPage: React.FC<QuestionProps> = ({
     },[quizQuestions])
 
     const PageToDisplay = useMemo(() => {
-        console.log('in memo correct answer', correctAnswer, questionIndex);
-        return answerSubmitted 
-            ? <QuizSolution answerSubmitted={+answerIndex} correctAnswer={correctAnswer} questionNumber={questionIndex}/> 
-            : 
-            <QuizPage 
-                quizQuestion={quizQuestions[questionIndex]}
-                handleAnswerSubmit={handleAnswerSubmit}
-            />
-    }, [answerSubmitted, correctAnswer])
+        if (questionIndex < quizQuestions.length) {
+            return answerSubmittedFlag 
+                ? <QuizSolution answerSubmitted={+answerIndex} correctAnswer={correctAnswer} questionNumber={questionIndex}/> 
+                : 
+                <QuizPage 
+                    quizQuestion={quizQuestions[questionIndex]}
+                    handleAnswerSubmit={handleAnswerSubmit}
+                />
+        }
+    }, [answerSubmittedFlag, correctAnswer])
+
+    if (!(questionIndex < quizQuestions.length)) {
+        return <Redirect to={'/'} />
+    }
     return (
         <React.Fragment>
             {PageToDisplay}
@@ -43,11 +50,12 @@ const QuizFrontPage: React.FC<QuestionProps> = ({
 }
 
 const mapStateToProps = (state: AppState) => ({
-        questionIndex: state.questionIndex
+        questionIndex: state.questionIndex,
+        answerSubmittedFlag: state.answerSubmittedFlag,
     });
 
-const mapDispatchToProps = (dispatch: Dispatch<ReduxBaseAction>) =>
-    bindActionCreators({ setQuizStart }, dispatch);
+const mapDispatchToProps = (dispatch: Dispatch<ReduxActions>) =>
+    bindActionCreators({ setQuizStart, setAnswerSubmitted }, dispatch);
 
 type QuestionProps = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>;
 

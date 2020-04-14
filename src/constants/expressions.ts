@@ -7,3 +7,6 @@ export const angletheta = `\u2220\u03B8`;
 export const vhat = HTMLReactParser('V&#770');
 export const zhat = HTMLReactParser('Z&#770');
 export const ihat = HTMLReactParser('I&#770');
+export const yhat = HTMLReactParser('Y&#770');
+export const plaintheta = HTMLReactParser('&#952');
+export const yphasor = `Y&#770 = Y<sub>m</sub> e<sup>j\u03B8</sup>`;

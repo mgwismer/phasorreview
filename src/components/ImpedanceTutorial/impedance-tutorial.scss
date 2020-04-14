@@ -30,6 +30,11 @@
         li {
             margin-left: 30px;
         }
+        &-redirect {
+            color: red;
+            text-decoration: underline;
+            cursor: pointer;
+        }
     }
 
     &-composite {

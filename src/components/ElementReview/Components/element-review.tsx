@@ -1,15 +1,18 @@
 import React, { useState, useMemo, useCallback } from 'react';
 import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import { AppState, ReduxBaseAction } from '../../../redux/reducer';
+import { Redirect, useHistory } from 'react-router';
+import { AppState, ReduxActions } from '../../../redux/reducer';
 import { ResistorReviewPage } from './resistor-review-page';
 import { CapacitorReviewPage } from './capacitor-review-page';
 import { InductorReviewPage } from './inductor-review-page';
 import { HomeBackForwardBtns } from '../../Buttons/home-back-forward-btn';
 import ReviewChart from '../../../assets/images/review5-1.gif';
-import { increaseQuestionIndex, resetQuestionIndex } from '../../../redux/actions';
+import { increaseQuestionIndex, resetQuestionIndex, setAnswerSubmitted } from '../../../redux/actions';
 import { pageLinkTypes } from '../../front-page/front-page-data-type';
-import { Redirect } from 'react-router';
+import { ReplyButton } from '../../Buttons/reply-button';
+import { frontPagePathTypes } from '../../front-page/front-page-data-type';
+
 
 export const ReviewPageTypes = {
     REVIEW: 'REVIEW',
@@ -22,19 +25,38 @@ const ElementReview: React.FC<ElementReviewProps> = ({
     questionIndex,
     quizStarted,
     increaseQuestionIndex,
+    setAnswerSubmitted,
  }) => {
     const [reviewPageType, setReviewPageType] = useState(ReviewPageTypes.REVIEW);
     const [goToQuizPage, setGoToQuizPage] = useState(false);
 
-    const handlePreviousPageClicked = useCallback(() => {
-        console.log('wait');
-    }, []);
-
     const goToNextQuizQuestion = useCallback(() => {
-        increaseQuestionIndex()
+        increaseQuestionIndex();
+        setAnswerSubmitted(false);
         setGoToQuizPage(true);
     }, [])
 
+    const history = useHistory();
+
+    const buttonText = useMemo(() => {
+        if (quizStarted)
+            return 'YES';
+        else
+            return 'CONTINUE';
+    }, [quizStarted]);
+
+    const handlePreviousPageClicked = useCallback(() => {
+        if (reviewPageType === ReviewPageTypes.REVIEW) {
+            history.goBack();
+        } else if(reviewPageType === ReviewPageTypes.RESISTOR) {
+            setReviewPageType(ReviewPageTypes.REVIEW); 
+        } else if(reviewPageType === ReviewPageTypes.CAPACITOR) {
+            setReviewPageType(ReviewPageTypes.RESISTOR);
+        } else {
+            setReviewPageType(ReviewPageTypes.CAPACITOR);
+        }
+    }, [reviewPageType])
+    
     const handleNextPageClicked = useCallback(() => {
         if (reviewPageType === ReviewPageTypes.REVIEW) {
             setReviewPageType(ReviewPageTypes.RESISTOR);
@@ -52,6 +74,7 @@ const ElementReview: React.FC<ElementReviewProps> = ({
             return (
                 <React.Fragment>
                     <div>
+                        <h2>Review on component laws with phasors</h2>
                         <img src={ReviewChart} alt='review chart' />
                         <div onClick={() => setReviewPageType(ReviewPageTypes.RESISTOR)}> Phasor review for resistors </div>
                     </div>
@@ -71,18 +94,15 @@ const ElementReview: React.FC<ElementReviewProps> = ({
     return (
         <div>
             {currentContent}
+            <div>
+                <ReplyButton mainText={buttonText} buttonSubText="I'll try another quiz question" buttonType={frontPagePathTypes.NEWPAGE} buttonAction={goToNextQuizQuestion} />
+            </div>
+
             {(questionIndex === 0) && 
                 <HomeBackForwardBtns
                     handlePreviousPageClicked={handlePreviousPageClicked}
                     handleNextPageClicked={handleNextPageClicked}
                 /> 
-            }
-            {(quizStarted) &&
-                <div>
-                    <button className='element-review-button' onClick={goToNextQuizQuestion} >
-                        Are you ready for next quiz question?
-                    </button>
-                </div>
             }
         </div>
     )
@@ -93,8 +113,8 @@ const mapStateToProps = (state: AppState) => ({
     quizStarted: state.quizStarted,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<ReduxBaseAction>) =>
-    bindActionCreators({ resetQuestionIndex, increaseQuestionIndex }, dispatch);
+const mapDispatchToProps = (dispatch: Dispatch<ReduxActions>) =>
+    bindActionCreators({ resetQuestionIndex, increaseQuestionIndex, setAnswerSubmitted }, dispatch);
 
 type ElementReviewProps = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>;
 

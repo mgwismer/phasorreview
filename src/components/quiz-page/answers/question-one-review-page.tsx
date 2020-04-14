@@ -2,6 +2,9 @@ import React, { useCallback, useState, useMemo } from 'react';
 import { QuestionOneSolution } from './question-one-answer';
 import { PhasorToTimeReview } from '../../PhasorToTimeReview/phasor-to-time-review';
 import  ElementReview  from '../../ElementReview/Components/element-review';
+import { ReplyButton } from '../../Buttons/reply-button';
+import { frontPagePathTypes } from '../../front-page/front-page-data-type';
+import { YesNoButtons } from '../../Buttons/yes-no-buttons';
 
 export const QuestionOneReviewPage: React.FC = () => {
     const [redirectToSolution, setRedirectToSolution] = useState(false);
@@ -17,6 +20,19 @@ export const QuestionOneReviewPage: React.FC = () => {
     }, []);
 
     const PageToDisplay = useMemo(() => {
+        const yesButtonProps = {
+            mainText: 'YES!',
+            subText: 'Not an issue',
+            type: frontPagePathTypes.NEWPAGE,
+            buttonAction: yesButtonClicked
+        }
+    
+        const noButtonProps = {
+            mainText: 'NO',
+            subText: 'What are you talking about',
+            type: frontPagePathTypes.NEWPAGE,
+            buttonAction: noButtonClicked
+        }
         const QuestionResponse = (
             <div>
                 <h2 className='question-one-review-title'> GOOD JOB!</h2>
@@ -24,12 +40,7 @@ export const QuestionOneReviewPage: React.FC = () => {
                     <span className='question-one-review-redirect' onClick={() => setRedirectToSolution(true)}> See the problem worked out </span>
                 </div>
                 <div className='question-one-review-prompt'>I guess that you remember how to transform from phasor notation back to time notation?</div>
-                <button className='reply-button' onClick={yesButtonClicked}>
-                    <div>Yep, Not an issue</div>
-                </button>
-                <button className='reply-button' onClick={noButtonClicked}>
-                    <div>Huh? What are you talking about</div>
-                </button>
+                <YesNoButtons yesButton={yesButtonProps} noButton={noButtonProps} />
             </div>
         )
         return QuestionResponse

@@ -1,9 +1,11 @@
-import React, { useState, useMemo, useCallback } from 'react';
+import React, { useState, useMemo, useCallback , useEffect} from 'react';
+import { store } from '../../App';
 import LogoImage from '../.././assets/images/ee_symbol1.gif';
-import { ReplyButton } from '../Buttons/reply-button';
+import { useLocation } from 'react-router';
 import { frontPageStyles } from './front-page-data';
 import { frontPageTypes } from './front-page-data-type';
-import { useLocation } from 'react-router';
+import { resetQuestionIndex, setAnswerSubmitted, setQuizStart } from '../../redux/actions';
+import { YesNoButtons } from '../Buttons/yes-no-buttons';
 
 export const FrontPage: React.FC = () => {
 
@@ -18,6 +20,9 @@ export const FrontPage: React.FC = () => {
     }, [currentPage])
 
     const yesButtonClicked = useCallback(() => {
+        store.dispatch(setQuizStart(false));
+        store.dispatch(setAnswerSubmitted(false));
+        store.dispatch(resetQuestionIndex());
         if (currentPage === frontPageTypes.LEAD) {
             setCurrentPage(frontPageTypes.QUIZ_START);
         }
@@ -31,18 +36,36 @@ export const FrontPage: React.FC = () => {
         }
     }, [currentPage])
 
-    const { text, buttonText, buttonPaths } = frontPageInformation;
+    const { text, subText, buttonText, buttonPaths } = frontPageInformation;
     const { yes: buttonYesText, no: buttonNoText } = buttonText;
     const { yes: buttonYesPath, no: buttonNoPath } = buttonPaths;
+    const yesButtonProps = {
+        mainText: 'YES!',
+        subText: buttonYesText,
+        type: buttonYesPath.type,
+        nextPath: buttonYesPath.path,
+        buttonAction: yesButtonClicked
+    }
+
+    const noButtonProps = {
+        mainText: 'NO',
+        subText: buttonNoText,
+        type: buttonNoPath.type,
+        nextPath: buttonNoPath.path,
+        buttonAction: noButtonClicked
+    }
+
     return (
         <div className='front-page-ee-symbol'>
             {/* Front Page */}
             <img src={LogoImage} width="614" height="168" alt='logo image'/> 
-            <div>
+            <h3>
                 {text}
-            </div>
-            <ReplyButton buttonText={buttonYesText} nextPath={buttonYesPath.path} buttonType={buttonYesPath.type} buttonAction={yesButtonClicked}/>
-            <ReplyButton buttonText={buttonNoText} nextPath={buttonNoPath.path} buttonType={buttonNoPath.type} buttonAction={noButtonClicked} />
+            </h3>
+            <h5>
+                {subText}
+            </h5>
+            <YesNoButtons yesButton={yesButtonProps} noButton={noButtonProps} />
         </div>
     )
 }

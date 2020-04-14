@@ -1,6 +1,8 @@
 import React, { useState, useCallback } from 'react';
 import Parser from "html-react-parser";
 import { quizQuestionType } from './quiz-question-type';
+import '../Buttons/reply-button';
+import './quiz-page.scss';
 
 type OwnProps = {
     quizQuestion: quizQuestionType;
@@ -19,29 +21,33 @@ export const QuizPage: React.FC<OwnProps> = ({ quizQuestion, handleAnswerSubmit 
     }, [selectedAnswer, handleAnswerSubmit]);
 
     return (
-        <div>
-            <div>{title}</div>
-            <div>{Parser(text)}</div>
-            <img src={image} alt='question image' />
-            <div>{Parser(question)}</div>
-                <div>
-                    {answerChoices.map((choice, index) => 
-                        <div>
-                            <label>
-                                <input 
-                                    type='radio'  
-                                    value={index}
-                                    name='choice'
-                                    checked={+selectedAnswer === index}
-                                    onChange={handleChange}
-                                />
-                                {choice}
-                            </label>
-                        </div>
-                    )}
-                </div>
+        <div className='quiz-page'>
+            <div className='quiz-page-title'>{title}</div>
+            <div className='quiz-page-text'>{Parser(text)}</div>
+            <div className='quiz-page-image'>
+                <img src={image} alt='question image' />
+            </div>
+            <div className='quiz-page-text'>{Parser(question)}</div>
+            <div className='quiz-page-text'>
+                {answerChoices.map((choice, index) => 
+                    <div className='quiz-page-answer'>
+                        <label>
+                            <input 
+                                type='radio'  
+                                value={index}
+                                name='choice'
+                                checked={+selectedAnswer === index}
+                                onChange={handleChange}
+                            />
+                            {(questionAnswerType === 'string') && choice}
+                            {(questionAnswerType === 'image') &&
+                                <img src={choice} alt='potential answer'/>}
+                        </label>
+                    </div>
+                )}
+            </div>
                 {(selectedAnswer !== 100) && 
-                    <button value='SUBMIT' onClick={handleSubmit}> SUBMIT </button>}
+                    <button className='reply-button quiz-page-reply-button' value='SUBMIT' onClick={handleSubmit}> SUBMIT </button>}
         </div>
     )
 }

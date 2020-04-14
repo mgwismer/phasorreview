@@ -76,11 +76,13 @@ export const TutorialFrontPage: React.FC<OwnProps> = ({ directedFromQuiz = false
                         {pageContent.map((content: contentType) => {
                             return (
                                 <li className='tutorial-page-content-grid'>
-                                    <span>
-                                        {content.text}
-                                        <span className='tutorial-page-subpage' onClick={handleSublinkClicked}>
-                                            {content.subLink || null}
-                                        </span>
+                                    <span className='tutorial-page-content-text'>
+                                        {Parser(content.text)}
+                                        {content.subLink &&
+                                            <span className='tutorial-page-content-subpage' onClick={handleSublinkClicked}>
+                                                ({content.subLink})
+                                            </span>
+                                        }
                                     </span>
                                     <span className='tutorial-page-content-eqn'>
                                         {content.equation ? <EquationDisplay equationString={content.equation} /> : null}

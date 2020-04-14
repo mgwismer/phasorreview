@@ -15,7 +15,7 @@ import { ImpedanceReview } from './components/ImpedanceTutorial/impedance-review
 import { ImpedanceTutorialPage } from './components/ImpedanceTutorial/impedance-tutorial-wrapper';
 import './App.scss';
 
-const store = createStore(rootReducer, InitialState);
+export const store = createStore(rootReducer, InitialState);
 
 function App() {
   return (
@@ -23,6 +23,7 @@ function App() {
       <div className="App">
         <Router>
           <Route exact path={'/'} component={FrontPage} />
+          <Route path={pageLinkTypes.FRONTPAGE} component={FrontPage} />
           <Route exact path={pageLinkTypes.TUTORIAL} component={TutorialFrontPage} />
           <Route exact path={pageLinkTypes.QUIZ} component={QuizFrontPage} />
           <Route path={pageLinkTypes.REVIEW} component={ElementReview} />

@@ -22,6 +22,7 @@ export enum pageLinkTypes {
 export type frontPageStylesType = {
     [key in frontPageTypes | string]: {
         text: string;
+        subText: string;
         buttonText: {
             yes: string;
             no: string;

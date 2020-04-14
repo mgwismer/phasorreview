@@ -2,7 +2,8 @@ import { frontPageStylesType, frontPageTypes, frontPagePathTypes, pageLinkTypes 
 
 export const frontPageStyles: frontPageStylesType = {
    [frontPageTypes.LEAD]: {
-        text: 'Do you remember anything about Phasors, the shorthand notation used to analyze AC circuits?',
+        text: 'Do you remember anything about Phasors?',
+        subText: 'the shorthand notation used to analyze AC circuits?',
         buttonText: {
             yes: 'I know what I\'m doing',
             no: 'I need help'
@@ -20,6 +21,7 @@ export const frontPageStyles: frontPageStylesType = {
     },
     [frontPageTypes.TUTORIAL_START]: {
         text: 'Would you like to go through simple tutorial on explaining phasors?',
+        subText: '',
         buttonText: {
             yes: 'Start tutorial',
             no: 'Quick Review'
@@ -37,6 +39,7 @@ export const frontPageStyles: frontPageStylesType = {
     },
     [frontPageTypes.REVIEW_START]: {
         text: 'Would you like to go through a quick review on phasor theory?',
+        subText: '',
         buttonText: {
             yes: 'Start Review',
             no: 'Not sure'
@@ -53,7 +56,8 @@ export const frontPageStyles: frontPageStylesType = {
         }
     },
     [frontPageTypes.QUIZ_START]: {
-        text: 'So you remember phasors? Are you ready to start a brief phasor-related quiz?',
+        text: 'So you remember phasors?',
+        subText: ' Are you ready to start a brief phasor-related quiz?',
         buttonText: {
             yes: 'Start Quiz',
             no: 'Maybe a quick review'

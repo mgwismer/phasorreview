@@ -3,16 +3,19 @@ import { QuestionOneSolution } from './question-one-answer';
 import { QuestionOneReviewPage } from './question-one-review-page';
 import { QuestionTwoReviewPage } from './question-two-review';
 import { QuestionTwoSolution } from './question-two-answer';
+import { QuestionThreeReviewPage } from './question-three-review';
+import { QuestionThreeSolution } from './question-three-answer';
+
 type OwnProps = {
     correctAnswer: number;
     answerSubmitted: number;
     questionNumber: number;
 }
+
 export const QuizSolution: React.FC<OwnProps> = ({ correctAnswer, answerSubmitted, questionNumber }) => {
     const correctAnswerFlag = correctAnswer === answerSubmitted;
-    console.log('quiz solution',  questionNumber, correctAnswerFlag)
+    
     const PageToDisplay = useMemo(() => {
-        console.log('correct answer', correctAnswer, questionNumber);
         if (questionNumber === 0) {
             return correctAnswerFlag
                 ? <QuestionOneReviewPage />
@@ -23,7 +26,11 @@ export const QuizSolution: React.FC<OwnProps> = ({ correctAnswer, answerSubmitte
                 ? <QuestionTwoReviewPage />
                 : <QuestionTwoSolution />
         } 
-
+        if (questionNumber === 2) {
+            return correctAnswerFlag
+                ? <QuestionThreeReviewPage />
+                : <QuestionThreeSolution />
+        } 
     }, [correctAnswer])
 
     return (
