@@ -1,6 +1,5 @@
 import React from 'react';
 import ImpedanceCartoon from '../../assets/images/power3-3.gif';
-import HTMLReactParser from 'html-react-parser';
 import { ihat, vhat, zhat } from '../../constants/expressions';
 
 export const ImpedanceTutPageTwo: React.FC = () => {

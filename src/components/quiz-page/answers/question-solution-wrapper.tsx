@@ -31,7 +31,7 @@ export const QuizSolution: React.FC<OwnProps> = ({ correctAnswer, answerSubmitte
                 ? <QuestionThreeReviewPage />
                 : <QuestionThreeSolution />
         } 
-    }, [correctAnswer])
+    }, [correctAnswerFlag, questionNumber])
 
     return (
         <React.Fragment>

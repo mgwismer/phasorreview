@@ -34,7 +34,7 @@ const ElementReview: React.FC<ElementReviewProps> = ({
         increaseQuestionIndex();
         setAnswerSubmitted(false);
         setGoToQuizPage(true);
-    }, [])
+    }, [increaseQuestionIndex, setAnswerSubmitted])
 
     const history = useHistory();
 
@@ -55,7 +55,7 @@ const ElementReview: React.FC<ElementReviewProps> = ({
         } else {
             setReviewPageType(ReviewPageTypes.CAPACITOR);
         }
-    }, [reviewPageType])
+    }, [reviewPageType, history])
     
     const handleNextPageClicked = useCallback(() => {
         if (reviewPageType === ReviewPageTypes.REVIEW) {

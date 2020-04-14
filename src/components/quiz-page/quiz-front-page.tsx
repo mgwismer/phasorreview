@@ -1,7 +1,6 @@
 import React, { useCallback, useState, useMemo, useEffect } from 'react';
 import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import { statement } from '@babel/template';
 import { Redirect } from 'react-router';
 import { quizQuestions } from './QuizQuestions';
 import { QuizPage } from './quiz-page';
@@ -20,12 +19,12 @@ const QuizFrontPage: React.FC<QuestionProps> = ({
     let correctAnswer = quizQuestions[questionIndex].correctAnswer;
     useEffect(() => {
         setQuizStart(true)
-    }, []);
+    }, [setQuizStart]);
 
     const handleAnswerSubmit = useCallback(answerChoice => {
         setAnswerSubmitted(true);
         setAnswerIndex(answerChoice)
-    },[quizQuestions])
+    },[quizQuestions, setAnswerSubmitted])
 
     const PageToDisplay = useMemo(() => {
         if (questionIndex < quizQuestions.length) {
@@ -37,7 +36,7 @@ const QuizFrontPage: React.FC<QuestionProps> = ({
                     handleAnswerSubmit={handleAnswerSubmit}
                 />
         }
-    }, [answerSubmittedFlag, correctAnswer])
+    }, [answerSubmittedFlag, correctAnswer, answerIndex, handleAnswerSubmit, questionIndex])
 
     if (!(questionIndex < quizQuestions.length)) {
         return <Redirect to={'/'} />

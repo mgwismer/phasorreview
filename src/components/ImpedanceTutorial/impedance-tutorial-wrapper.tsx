@@ -8,7 +8,7 @@ import { ImpedanceTutPageThree } from './impedance-tutorial-page-three';
 import { ImpedanceTutPageFive } from './impedance-tutorial-page-five';
 import { ImpedanceTutPageSix } from './impedance-tutorial-page-six';
 import { ImpedanceTutPageTen } from './impedance-tutorial-page-ten';
-import { frontPagePathTypes, frontPageTypes, pageLinkTypes } from '../front-page/front-page-data-type';
+import { frontPagePathTypes, pageLinkTypes } from '../front-page/front-page-data-type';
 import { ImpedanceTutPageNine } from './impedance-tutorial-page-nine';
 import { ImpedanceTutPageSeven } from './impedance-tutorial-page-seven';
 import { ImpedanceTutPageEight } from './impedance-tutorial-page-eight';
@@ -42,7 +42,7 @@ export const ImpedanceTutorialPage: React.FC<OwnProps> = ({ startIndex = 0}) => 
         if(pageIndex < finalIndex) {
             setPageIndex(pageIndex+1)
         }
-    }, [pageIndex]);
+    }, [pageIndex, finalIndex]);
 
     const handlePreviousPageClicked = useCallback(() => {
         // This startIndex indicates got here from review page
@@ -54,7 +54,7 @@ export const ImpedanceTutorialPage: React.FC<OwnProps> = ({ startIndex = 0}) => 
             setPageIndex(pageIndex-1)
         } else
             history.goBack();
-    }, [pageIndex]);
+    }, [pageIndex, history, startIndex]);
 
     const yesButtonProps = {
         mainText: 'YES!',

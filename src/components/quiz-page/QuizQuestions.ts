@@ -2,7 +2,6 @@ import { quizQuestionsType } from "./quiz-question-type";
 import CircuitProblemImage from '../../assets/images/review3-3.gif';
 import InductorTimeTrace from '../../assets/images/review6.gif';
 import LRCCircuit from '../../assets/images/diagram1.gif';
-import CircuitValues from '../../assets/images/diagram.jpg';
 import ZeroPhase from '../../assets/images/diagram3.gif';
 import BigPhase from '../../assets/images/diagram4.gif';
 import PositivePhase from '../../assets/images/diagram2.gif';

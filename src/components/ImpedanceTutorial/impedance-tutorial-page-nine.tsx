@@ -2,7 +2,6 @@ import React from 'react';
 import CapacitorImage from '../../assets/images/capacitor.gif';
 import ImpedanceDerivation from '../../assets/images/power10-1.gif';
 import { zhat, vhat, ihat } from '../../constants/expressions';
-import HTMLReactParser from 'html-react-parser';
 
 export const ImpedanceTutPageNine: React.FC = () => {
     return (

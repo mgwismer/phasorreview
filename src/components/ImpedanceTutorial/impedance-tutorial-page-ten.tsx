@@ -1,8 +1,7 @@
 import React from 'react';
 import ImpedanceZImage from '../../assets/images/z.gif';
 import ImpedanceReview from '../../assets/images/power11-1.gif';
-import { zhat, vhat, ihat } from '../../constants/expressions';
-import HTMLReactParser from 'html-react-parser';
+import { zhat } from '../../constants/expressions';
 
 export const ImpedanceTutPageTen: React.FC = () => {
     return (

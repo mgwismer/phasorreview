@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback , useEffect} from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import { store } from '../../App';
 import LogoImage from '../.././assets/images/ee_symbol1.gif';
 import { useLocation } from 'react-router';
@@ -58,7 +58,7 @@ export const FrontPage: React.FC = () => {
     return (
         <div className='front-page-ee-symbol'>
             {/* Front Page */}
-            <img src={LogoImage} width="614" height="168" alt='logo image'/> 
+            <img src={LogoImage} width="614" height="168" alt='logo'/> 
             <h3>
                 {text}
             </h3>

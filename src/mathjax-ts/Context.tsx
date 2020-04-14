@@ -1,9 +1,7 @@
 import { IContext, Input, MathJaxUnknown } from '.';
 import React from 'react';
-import { Redirect } from 'react-router';
 
 const loadScript = require('load-script');
-
 
 export const defaultContext = {
   input: 'ascii' as Input,
@@ -18,7 +16,6 @@ interface IProps {
     script?: string | false;
     input?: Input;
     delay?: number;
-    options?: {};
     loading?: React.ReactNode;
     noGate?: boolean;
 
@@ -58,7 +55,7 @@ class Context extends React.Component<IProps, IState> {
   }
 
   public onLoad() {
-    const options = this.props.options;
+    // const options = this.props.options;
     const MathJax = (window as any).MathJax;
     MathJax.Hub.Config({
       "HTML-CSS": {

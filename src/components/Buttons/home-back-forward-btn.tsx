@@ -1,5 +1,4 @@
 import React, { useState, useCallback } from 'react';
-import { useHistory } from 'react-router-dom';
 import { Redirect } from 'react-router';
 import { store } from '../../App';
 import { pageLinkTypes } from '../../components/front-page/front-page-data-type';
@@ -26,7 +25,7 @@ export const HomeBackForwardBtns: React.FC<OwnProps> = ({
         store.dispatch(setAnswerSubmitted(false));
         store.dispatch(resetQuestionIndex());
         setReturnToHome(true);
-    }, [setQuizStart, setAnswerSubmitted, resetQuestionIndex])
+    }, [])
 
     if (returnToHome) {
         return <Redirect to={pageLinkTypes.FRONTPAGE} />

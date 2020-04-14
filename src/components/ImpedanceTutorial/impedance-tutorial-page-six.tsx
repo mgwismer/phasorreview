@@ -1,7 +1,6 @@
 import React from 'react';
 import ClapboardImage from '../../assets/images/power7-1.gif';
 import { zhat } from '../../constants/expressions';
-import HTMLReactParser from 'html-react-parser';
 
 export const ImpedanceTutPageSix: React.FC = () => {
     return (

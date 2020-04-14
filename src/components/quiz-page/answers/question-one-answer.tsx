@@ -45,7 +45,7 @@ export const QuestionOneSolution: React.FC<OwnProps> = ({ correctAnswer }) => {
                 <YesNoButtons yesButton={yesButtonProps} noButton={noButtonProps} />
             </div>
         </div>
-    )}, [correctAnswer])
+    )}, [])
 
     if (gotoPhasorReview) {
         return <PhasorToTimeReview />
