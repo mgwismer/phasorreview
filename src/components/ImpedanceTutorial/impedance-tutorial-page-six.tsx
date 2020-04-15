@@ -7,7 +7,7 @@ export const ImpedanceTutPageSix: React.FC = () => {
         <React.Fragment>
             <div className='impedance-tutorial-title'>
                 <span className='impedance-tutorial-title-leftimage'>
-                    <img src={ClapboardImage} alt='notes image'/>
+                    <img src={ClapboardImage} alt='notes'/>
                 </span>
                 <h2>Another take on the rectangular form</h2>
             </div>

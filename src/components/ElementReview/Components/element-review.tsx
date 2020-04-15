@@ -31,18 +31,20 @@ const ElementReview: React.FC<ElementReviewProps> = ({
     const [goToQuizPage, setGoToQuizPage] = useState(false);
 
     const goToNextQuizQuestion = useCallback(() => {
-        increaseQuestionIndex();
+        if (quizStarted) {
+            increaseQuestionIndex();
+        }
         setAnswerSubmitted(false);
         setGoToQuizPage(true);
-    }, [increaseQuestionIndex, setAnswerSubmitted])
+    }, [increaseQuestionIndex, setAnswerSubmitted, quizStarted])
 
     const history = useHistory();
 
     const buttonText = useMemo(() => {
-        if (quizStarted)
-            return 'YES';
+        if (!quizStarted)
+            return { main: 'YES', subText: 'Ready for quiz' };
         else
-            return 'CONTINUE';
+            return { main: 'CONTINUE', subText: 'I\'ll try another question' };
     }, [quizStarted]);
 
     const handlePreviousPageClicked = useCallback(() => {
@@ -95,7 +97,12 @@ const ElementReview: React.FC<ElementReviewProps> = ({
         <div>
             {currentContent}
             <div>
-                <ReplyButton mainText={buttonText} buttonSubText="I'll try another quiz question" buttonType={frontPagePathTypes.NEWPAGE} buttonAction={goToNextQuizQuestion} />
+                <ReplyButton 
+                    mainText={buttonText.main} 
+                    buttonSubText={buttonText.subText} 
+                    buttonType={frontPagePathTypes.NEWPAGE} 
+                    buttonAction={goToNextQuizQuestion} 
+                />
             </div>
 
             {(questionIndex === 0) && 

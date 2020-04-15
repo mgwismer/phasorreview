@@ -1,10 +1,10 @@
-import React, { useState, useMemo, useCallback, useEffect } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import { TutorialPage, PageType, contentType } from './tutorial-data';
 import { EquationDisplay } from '../EquationDisplay/equation-display';
 import { HomeBackForwardBtns } from '../Buttons/home-back-forward-btn';
 import EulerPortrait from '../.././assets/images/euler_portrait.gif';
 import { EulerPage } from './euler-page';
-import { Redirect } from 'react-router';
+import { Redirect, useHistory } from 'react-router';
 import Parser from 'html-react-parser';
 import { pageLinkTypes, frontPageTypes } from '../front-page/front-page-data-type';
 import './tutorial-page.scss';
@@ -18,6 +18,7 @@ export const TutorialFrontPage: React.FC<OwnProps> = ({ directedFromQuiz = false
     const [isSubPage, setIsSubPage] = useState(false);
     const [redirectToQuizPage, setRedirectToQuizPage] = useState(false);
     const [redirectToElementReviewPage, setToElementReviewPage] = useState(false);
+    const history = useHistory();
     
     const currentPage = useMemo(() => {
         return TutorialPage[pageIndex];
@@ -26,10 +27,12 @@ export const TutorialFrontPage: React.FC<OwnProps> = ({ directedFromQuiz = false
     const handlePreviousPageClicked = useCallback(() => {
         if (pageIndex > 0) {
             setPageIndex(pageIndex - 1)
+        } else {
+            history.goBack();
         }
         setIsSubPage(false);
         setRedirectToQuizPage(false);
-    }, [pageIndex])
+    }, [history, pageIndex])
 
     const handleNextPageClicked = useCallback(() => {
         if (pageIndex < TutorialPage.length - 1) {
@@ -40,11 +43,11 @@ export const TutorialFrontPage: React.FC<OwnProps> = ({ directedFromQuiz = false
             setRedirectToQuizPage(true);
         }
         setIsSubPage(false);
-    }, [pageIndex])
+    }, [pageIndex, directedFromQuiz])
 
     const handleSublinkClicked = useCallback(() => {
         setIsSubPage(true);
-    }, [pageIndex])
+    }, [])
 
     const currentContent = useMemo(() => {
         if (!isSubPage && currentPage && currentPage.type === PageType.PARAGRAPH) {
@@ -99,13 +102,13 @@ export const TutorialFrontPage: React.FC<OwnProps> = ({ directedFromQuiz = false
                 <div>
                     <div className='euler-page-title'>
                         <h2 className='euler-page-title-text'>Review of Euler's Identity</h2>
-                        <img className='euler-page-title-image' src={EulerPortrait} alt='euler picture' />
+                        <img className='euler-page-title-image' src={EulerPortrait} alt='euler' />
                     </div> 
                     <EulerPage />
                 </div>
             )
         }
-    }, [pageIndex, currentPage, isSubPage])
+    }, [currentPage, isSubPage, handleSublinkClicked])
 
     if (redirectToElementReviewPage) {
         return <Redirect to={pageLinkTypes.REVIEW} />

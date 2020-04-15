@@ -24,7 +24,7 @@ const QuizFrontPage: React.FC<QuestionProps> = ({
     const handleAnswerSubmit = useCallback(answerChoice => {
         setAnswerSubmitted(true);
         setAnswerIndex(answerChoice)
-    },[quizQuestions, setAnswerSubmitted])
+    },[setAnswerSubmitted])
 
     const PageToDisplay = useMemo(() => {
         if (questionIndex < quizQuestions.length) {

@@ -30,6 +30,15 @@ function App() {
           <Route path={pageLinkTypes.IMPEDANCEREVIEW} component={ImpedanceReview} />
           <Route path={pageLinkTypes.IMPEDANCETUT} component={ImpedanceTutorialPage} />
         </Router>
+        <div className='App-footer'>
+          created by:
+          <br/>
+          Mary T. Wycheck
+          <br/>
+          Margaret G. Wismer (margaretgwismer@gmail.com)
+          <br/>
+          Created: Summer 1999/Updated: Spring 2020
+        </div>
       </div>
     </Provider>
   );

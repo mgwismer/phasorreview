@@ -31,7 +31,7 @@ export const resistorTableData: tableReviewType = {
             },
             {
                 text: `*Note \u03B2 = \u03B8, in a resistor voltage and current are in phase`,
-                equation: '\hat{V} = \hat{I} R',
+                equation: '\hat{V} = \hat{I} R'
             }
         ],
         tableEnd: {

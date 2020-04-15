@@ -25,7 +25,7 @@ export const QuizPage: React.FC<OwnProps> = ({ quizQuestion, handleAnswerSubmit 
             <div className='quiz-page-title'>{title}</div>
             <div className='quiz-page-text'>{Parser(text)}</div>
             <div className='quiz-page-image'>
-                <img src={image} alt='question image' />
+                <img src={image} alt='question' />
             </div>
             <div className='quiz-page-text'>{Parser(question)}</div>
             <div className='quiz-page-text'>

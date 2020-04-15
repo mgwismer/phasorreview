@@ -8,11 +8,11 @@ export const ImpedanceTutPageFour: React.FC = () => {
         <React.Fragment>
             <div className='impedance-tutorial-title'>
                 <span className='impedance-tutorial-title-leftimage'>
-                    <img src={NotesImage} alt='notes image'/>
+                    <img src={NotesImage} alt='notes'/>
                 </span>
                 <h2>Notes</h2>
                 <span className='impedance-tutorial-title-rightimage'>
-                    <img src={NotesImage} alt='notes image'/>
+                    <img src={NotesImage} alt='notes'/>
                 </span>
             </div>
             <ul className='impedance-tutorial-text'>
