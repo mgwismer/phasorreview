@@ -22,7 +22,7 @@ export const QuizPage: React.FC<OwnProps> = ({ quizQuestion, handleAnswerSubmit 
 
     return (
         <div className='quiz-page'>
-            <div className='quiz-page-title'>{title}</div>
+            <div className='quiz-page-title'>{title} </div>
             <div className='quiz-page-text'>{Parser(text)}</div>
             <div className='quiz-page-image'>
                 <img src={image} alt='question' />
@@ -39,7 +39,7 @@ export const QuizPage: React.FC<OwnProps> = ({ quizQuestion, handleAnswerSubmit 
                                 checked={+selectedAnswer === index}
                                 onChange={handleChange}
                             />
-                            {(questionAnswerType === 'string') && choice}
+                            {(questionAnswerType === 'string') && Parser(choice)}
                             {(questionAnswerType === 'image') &&
                                 <img src={choice} alt='potential answer'/>}
                         </label>

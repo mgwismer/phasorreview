@@ -6,6 +6,7 @@ import ZeroPhase from '../../assets/images/diagram3.gif';
 import BigPhase from '../../assets/images/diagram4.gif';
 import PositivePhase from '../../assets/images/diagram2.gif';
 import Negative90Phase from '../../assets/images/diagram5.gif';
+import TwoVoltageCircuit from '../../assets/images/test1-1.gif';
 
 
 export const quizQuestions: quizQuestionsType = [
@@ -49,5 +50,19 @@ export const quizQuestions: quizQuestionsType = [
             Negative90Phase
         ],
         correctAnswer: 2,
+    },
+    {
+        title: 'Circuit analysis with phasors',
+        text: 'For the circuit below, choose the most accurate phasor diagram representation of Vs.',
+        question: 'Select the closest voltage',
+        image: TwoVoltageCircuit,
+        questionAnswerType: 'string',
+        answerChoices: [
+            `V<sub>L</sub>(t) = 28 cos(300t+47\u00B0)`,
+            `V<sub>L</sub>(t) = 28 cos(300t+47\u00B0)`,
+            `V<sub>L</sub>(t) = 37 cos(300t-65\u00B0)`,
+            `V<sub>L</sub>(t) = 33 cos(300t+82\u00B0)`
+        ],
+        correctAnswer: 3,
     }
 ]

@@ -32,7 +32,7 @@ export const TutorialFrontPage: React.FC<OwnProps> = ({ directedFromQuiz = false
         }
         setIsSubPage(false);
         setRedirectToQuizPage(false);
-    }, [history, pageIndex])
+    }, [pageIndex, history])
 
     const handleNextPageClicked = useCallback(() => {
         if (pageIndex < TutorialPage.length - 1) {

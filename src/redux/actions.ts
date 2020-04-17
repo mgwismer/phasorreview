@@ -21,7 +21,6 @@ export function setQuizStart(value: boolean): ReduxActions {
 }
 
 export function setAnswerSubmitted(value: boolean): ReduxActions {
-    console.log('answer submitted action', value);
     return {
         type: ReduxActionTypes.SET_ANSWER_SUBMITTED,
         data: value,

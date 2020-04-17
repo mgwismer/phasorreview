@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PhasorDiagram from '../../../assets/images/diagram2.gif'
 import PhasorEquations from '../../../assets/images/diagram6.gif'
 import PhasorColorDiagram from '../../../assets/images/diagram7.gif'
 import { ihat } from '../../../constants/expressions';
+import { ReplyButton } from '../../Buttons/reply-button';
+import { frontPagePathTypes } from '../../front-page/front-page-data-type';
+import { setAnswerSubmitted, increaseQuestionIndex } from '../../../redux/actions';
+import { store } from '../../../App';
 import './quiz-answers.scss';
-import { OutsideLinks } from '../../OutsideLinks/outside-links';
 
 export const QuestionThreeSolution: React.FC = () => {
+
+    const goToNextQuizQuestion = useCallback(() => {
+        store.dispatch(increaseQuestionIndex());
+        store.dispatch(setAnswerSubmitted(false));
+    }, [])
     return (
         <div className='quiz-solution'>
             <h2 className='quiz-solution-title'>Phasor Diagram Review</h2>
@@ -32,7 +40,12 @@ export const QuestionThreeSolution: React.FC = () => {
                     </li>
                 </ul>
             </div>
-            <OutsideLinks />
+            <ReplyButton 
+                mainText='CONTINUE' 
+                buttonSubText='More practice questions'
+                buttonType={frontPagePathTypes.NEWPAGE} 
+                buttonAction={goToNextQuizQuestion} 
+            />
         </div>
     )
 }

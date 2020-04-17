@@ -5,6 +5,7 @@ import { QuestionTwoReviewPage } from './question-two-review';
 import { QuestionTwoSolution } from './question-two-answer';
 import { QuestionThreeReviewPage } from './question-three-review';
 import { QuestionThreeSolution } from './question-three-answer';
+import { QuestionFourReviewPage } from './question-four-review';
 
 type OwnProps = {
     correctAnswer: number;
@@ -31,6 +32,9 @@ export const QuizSolution: React.FC<OwnProps> = ({ correctAnswer, answerSubmitte
                 ? <QuestionThreeReviewPage />
                 : <QuestionThreeSolution />
         } 
+        if (questionNumber === 3) {
+            return <QuestionFourReviewPage correctAnswer={correctAnswerFlag}/>
+        }
     }, [correctAnswerFlag, questionNumber])
 
     return (
