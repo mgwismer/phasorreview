@@ -1,8 +1,23 @@
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## What is it?
 
-In the project directory, you can run:
+This is a purely front end react tutorial site intended to give an introduction to concepts in phasors and phasor analysis. No servers are needed to run it, no databases are used. In addition to providing an introduction to phasors it is an open source project that offers practice in contributing to open source. 
+
+## Contributing
+
+Fork this repository to your own GitHub account and then clone it to your local device
+
+Navigate to the cloned folder: cd phasorreview
+
+Install the dependencies: yarn
+
+Run yarn run start to build and watch for code changes
+
+Make changes in your local branch and then push back up to the main repository and create a pull request. For complete instructions or creating a pull requests please reference https://www.digitalocean.com/community/tutorials/how-to-create-a-pull-request-on-github
+
+Check existing issues for possible improvements and bug fixes.
 
 ### `yarn start`
 
@@ -16,6 +31,8 @@ You will also see any lint errors in the console.
 
 Launches the test runner in the interactive watch mode.<br />
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+Currently there are no tests
 
 ### `yarn build`
 
