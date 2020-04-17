@@ -1,27 +1,28 @@
 {
   "files": {
-    "main.css": "/phasorreview/static/css/main.5bf828ff.chunk.css",
-    "main.js": "/phasorreview/static/js/main.077b795c.chunk.js",
-    "main.js.map": "/phasorreview/static/js/main.077b795c.chunk.js.map",
+    "main.css": "/phasorreview/static/css/main.bea0b1b8.chunk.css",
+    "main.js": "/phasorreview/static/js/main.08b4a653.chunk.js",
+    "main.js.map": "/phasorreview/static/js/main.08b4a653.chunk.js.map",
     "runtime-main.js": "/phasorreview/static/js/runtime-main.bcb2e93c.js",
     "runtime-main.js.map": "/phasorreview/static/js/runtime-main.bcb2e93c.js.map",
-    "static/js/2.dff6b98f.chunk.js": "/phasorreview/static/js/2.dff6b98f.chunk.js",
-    "static/js/2.dff6b98f.chunk.js.map": "/phasorreview/static/js/2.dff6b98f.chunk.js.map",
+    "static/js/2.1f92a3d2.chunk.js": "/phasorreview/static/js/2.1f92a3d2.chunk.js",
+    "static/js/2.1f92a3d2.chunk.js.map": "/phasorreview/static/js/2.1f92a3d2.chunk.js.map",
     "index.html": "/phasorreview/index.html",
-    "precache-manifest.082663878fa40f71a1a24e5051e89f04.js": "/phasorreview/precache-manifest.082663878fa40f71a1a24e5051e89f04.js",
+    "precache-manifest.024213da07503697872dd6823e922681.js": "/phasorreview/precache-manifest.024213da07503697872dd6823e922681.js",
     "service-worker.js": "/phasorreview/service-worker.js",
-    "static/css/main.5bf828ff.chunk.css.map": "/phasorreview/static/css/main.5bf828ff.chunk.css.map",
-    "static/js/2.dff6b98f.chunk.js.LICENSE.txt": "/phasorreview/static/js/2.dff6b98f.chunk.js.LICENSE.txt",
+    "static/css/main.bea0b1b8.chunk.css.map": "/phasorreview/static/css/main.bea0b1b8.chunk.css.map",
+    "static/js/2.1f92a3d2.chunk.js.LICENSE.txt": "/phasorreview/static/js/2.1f92a3d2.chunk.js.LICENSE.txt",
     "static/media/euler_portrait.gif": "/phasorreview/static/media/euler_portrait.e1e83a14.gif",
     "static/media/power6-3.gif": "/phasorreview/static/media/power6-3.231ab30e.gif",
     "static/media/power7-1.gif": "/phasorreview/static/media/power7-1.b5f776a9.gif",
     "static/media/review4-1.gif": "/phasorreview/static/media/review4-1.37522037.gif",
+    "static/media/test1-1a.jpg": "/phasorreview/static/media/test1-1a.e18e5c34.jpg",
     "static/media/z.gif": "/phasorreview/static/media/z.508736bf.gif"
   },
   "entrypoints": [
     "static/js/runtime-main.bcb2e93c.js",
-    "static/js/2.dff6b98f.chunk.js",
-    "static/css/main.5bf828ff.chunk.css",
-    "static/js/main.077b795c.chunk.js"
+    "static/js/2.1f92a3d2.chunk.js",
+    "static/css/main.bea0b1b8.chunk.css",
+    "static/js/main.08b4a653.chunk.js"
   ]
 }
