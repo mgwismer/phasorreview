@@ -4,7 +4,7 @@ import { ReviewTable } from '../ElementReview/Components/review-table';
 import { YesNoButtons } from '../Buttons/yes-no-buttons';
 import { frontPagePathTypes, pageLinkTypes } from '../front-page/front-page-data-type';
 import { store } from '../../App';
-import { setAnswerSubmitted } from '../../redux/actions';
+import { setAnswerSubmitted, increaseQuestionIndex } from '../../redux/actions';
 
 
 const phasorToTimeReview: tableReviewType = {
@@ -33,6 +33,7 @@ const phasorToTimeReview: tableReviewType = {
 }
 export const PhasorToTimeReview: React.FC = () => {
     const gotoNextQuizQuestion = useCallback(() => {
+        store.dispatch(increaseQuestionIndex())
         store.dispatch(setAnswerSubmitted(false))
     }, []);
     
