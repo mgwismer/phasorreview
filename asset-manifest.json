@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/phasorreview/static/css/main.bea0b1b8.chunk.css",
-    "main.js": "/phasorreview/static/js/main.08b4a653.chunk.js",
-    "main.js.map": "/phasorreview/static/js/main.08b4a653.chunk.js.map",
+    "main.js": "/phasorreview/static/js/main.fd84a86e.chunk.js",
+    "main.js.map": "/phasorreview/static/js/main.fd84a86e.chunk.js.map",
     "runtime-main.js": "/phasorreview/static/js/runtime-main.bcb2e93c.js",
     "runtime-main.js.map": "/phasorreview/static/js/runtime-main.bcb2e93c.js.map",
     "static/js/2.1f92a3d2.chunk.js": "/phasorreview/static/js/2.1f92a3d2.chunk.js",
     "static/js/2.1f92a3d2.chunk.js.map": "/phasorreview/static/js/2.1f92a3d2.chunk.js.map",
     "index.html": "/phasorreview/index.html",
-    "precache-manifest.024213da07503697872dd6823e922681.js": "/phasorreview/precache-manifest.024213da07503697872dd6823e922681.js",
+    "precache-manifest.53d3b631ffb9b68f16220964f7027301.js": "/phasorreview/precache-manifest.53d3b631ffb9b68f16220964f7027301.js",
     "service-worker.js": "/phasorreview/service-worker.js",
     "static/css/main.bea0b1b8.chunk.css.map": "/phasorreview/static/css/main.bea0b1b8.chunk.css.map",
     "static/js/2.1f92a3d2.chunk.js.LICENSE.txt": "/phasorreview/static/js/2.1f92a3d2.chunk.js.LICENSE.txt",
@@ -23,6 +23,6 @@
     "static/js/runtime-main.bcb2e93c.js",
     "static/js/2.1f92a3d2.chunk.js",
     "static/css/main.bea0b1b8.chunk.css",
-    "static/js/main.08b4a653.chunk.js"
+    "static/js/main.fd84a86e.chunk.js"
   ]
 }
