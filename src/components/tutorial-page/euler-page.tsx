@@ -23,14 +23,14 @@ export const EulerPage: React.FC = () => {
                 &nbsp;
                 <EquationDisplay equationString="e^(j theta) = cos(theta) + j sin(theta)" />
             </div>
-            <div className='euler-third-line'>
+            <div className='euler-second-line'>
                 <span>
                     In polar form:
                 </span>
                 &nbsp;
                 <EquationDisplay equationString="a + jb = C e^(j theta) = C \angle theta" />
             </div>
-            <div className='euler-fourth-line'>
+            <div className='euler-second-line'>
                 <span>
                     Where
                 </span>

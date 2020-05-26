@@ -42,14 +42,14 @@ export const YesNoButtons: React.FC<OwnProps> = ({ yesButton, noButton }) => {
                 buttonType={yesType} 
                 nextPath={yesNext}
                 buttonAction={yesAction}
-        />
-        <ReplyButton 
+            />
+            <ReplyButton 
                 mainText={noMain}
                 buttonSubText={noSub}
                 buttonType={noType} 
                 nextPath={noNext}
                 buttonAction={noAction}
-        />
+            />
         </div>
     )
 
