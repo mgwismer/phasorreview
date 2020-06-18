@@ -15,7 +15,7 @@ Install the dependencies: yarn
 
 Run yarn run start to build and watch for code changes
 
-Make changes in your local branch and then push back up to the main repository and create a pull request. For complete instructions or creating a pull requests please reference https://www.digitalocean.com/community/tutorials/how-to-create-a-pull-request-on-github
+Make changes in your local branch and then push back up to the main repository and create a pull request. For complete instructions on creating a pull requests please reference https://www.digitalocean.com/community/tutorials/how-to-create-a-pull-request-on-github
 
 Check existing issues for possible improvements and bug fixes.
 
